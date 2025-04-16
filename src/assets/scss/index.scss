@@ -1,0 +1,68 @@
+// @import './base.scss';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  font-weight: normal;
+}
+
+.el-header,
+.el-main {
+  padding: 0 !important;
+  height: unset !important;
+}
+
+body {
+  font-family: Arial, 微軟正黑體, "Microsoft JhengHei", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+i {
+  font-style: normal;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.el-container {
+  min-width: 1200px !important;
+}
+
+.el-main {
+  background: #eee;
+}
+
+@media (max-width: 750px) {
+  html {
+    // font-size: 13.3333vw;
+    /* 750px时100px，相当于100/750*100vw */
+  }
+
+  // .el-container {
+  //   min-width: unset !important;
+  // }
+
+  // .container {
+  //   max-width: unset;
+  //   margin: unset;
+  // }
+}
