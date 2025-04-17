@@ -401,6 +401,11 @@
         position: absolute;
         z-index: 11;
         top: 28%;
+        color: #666;
+      }
+
+      .swiper-button-disabled {
+        color: #acacac;
       }
 
       .custom-prev {
