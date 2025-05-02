@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2025-04-03 14:11:20
+ * @LastEditors: “jiamin” “jiamin@gritworld.com”
+ * @LastEditTime: 2025-05-02 19:38:07
+ * @FilePath: /mywoo/src/App.vue
+-->
 <template>
   <RouterView />
 </template>

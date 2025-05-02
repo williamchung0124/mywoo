@@ -1,3 +1,9 @@
+/*
+ * @Date: 2025-04-03 14:11:20
+ * @LastEditors: “jiamin” “jiamin@gritworld.com”
+ * @LastEditTime: 2025-05-02 18:34:50
+ * @FilePath: /mywoo/vite.config.js
+ */
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { vitePrerenderPlugin } from 'vite-prerender-plugin';
@@ -20,7 +26,7 @@ export default defineConfig({
   },
 
   server: {
-    port: 3000,              // 设置本地开发端口
+    port: 4000,              // 设置本地开发端口
     open: true,              // 自动打开浏览器
     proxy: {
       // 将 /api 的请求代理到目标地址

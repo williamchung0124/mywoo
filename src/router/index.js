@@ -1,3 +1,9 @@
+/*
+ * @Date: 2025-04-11 15:45:37
+ * @LastEditors: “jiamin” “jiamin@gritworld.com”
+ * @LastEditTime: 2025-05-02 17:36:49
+ * @FilePath: /mywoo/src/router/index.js
+ */
 import { createRouter, createWebHistory } from 'vue-router'
 
 // 路由配置表
@@ -26,6 +32,11 @@ const routes = [
         path: '/list',
         name: 'list',
         component: () => import('../views/List/index.vue')
+      },
+      {
+        path: '/list/content/:id',
+        name: 'listContent',
+        component: () => import('../views/ListDetail/index.vue')
       }
     ]
   }
