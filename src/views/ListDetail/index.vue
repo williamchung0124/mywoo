@@ -229,7 +229,7 @@
 </template>
 
 <script setup>
-import Icon from '@/components/Icon.vue'
+
 import PropertyCard from './component/PropertyCard.vue'
 import pic1 from '@/assets/image/list/Group 128.svg'
 import pic2 from '@/assets/image/list/Group 129.svg'

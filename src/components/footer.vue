@@ -50,7 +50,7 @@
         <a href="#">免責聲明</a><a href="#">隱私權政策</a> 版權 © 1986-2024 買屋網-便宜中古屋
       </div>
     </div>
-    <p class="border1"></p>
+    <p class="border1 hidden-xs-only"></p>
   </footer>
 </template>
 
@@ -65,8 +65,8 @@ a:hover {
 .footer-wrapper {
   background: #535353;
   color: #fff;
-  height: 295px;
   padding-top: 32px;
+  padding-bottom: 28px;
   box-sizing: border-box;
   position: relative;
 
@@ -170,7 +170,7 @@ a:hover {
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 767px) {
   .footer-wrapper {
     min-width: auto;
     height: auto;

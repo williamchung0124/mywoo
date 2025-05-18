@@ -1,10 +1,10 @@
 /*
  * @Date: 2025-04-11 15:45:37
  * @LastEditors: “jiamin” “jiamin@gritworld.com”
- * @LastEditTime: 2025-05-02 17:36:49
+ * @LastEditTime: 2025-05-11 02:06:40
  * @FilePath: /mywoo/src/router/index.js
  */
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 // 路由配置表
 const routes = [
@@ -20,7 +20,7 @@ const routes = [
   },
   {
     path: '/',
-    redirect: { name: 'home' },
+    redirect: { name: 'list' },
     component: () => import('@/views/Main/index.vue'),
     children: [
       {
@@ -44,7 +44,7 @@ const routes = [
 
 // 创建路由实例
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes
 })
 

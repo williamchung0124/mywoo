@@ -1,106 +1,308 @@
 <template>
-  <div>
-    <!-- 筛选栏 -->
-    <div class="container py-3">
-      <form class="row g-2 align-items-center">
-        <div class="col-12 col-md-3">
-          <input type="text" class="form-control" placeholder="請輸入物件關鍵字...">
-        </div>
-        <div class="col-6 col-md-2">
-          <select class="form-select">
-            <option>高雄市</option>
-            <option>台南市</option>
-            <option>台中市</option>
-          </select>
-        </div>
-        <div class="col-6 col-md-2">
-          <select class="form-select">
-            <option>類型</option>
-            <option>公寓</option>
-            <option>華廈</option>
-            <option>透天</option>
-            <option>土地</option>
-          </select>
-        </div>
-        <div class="col-6 col-md-2">
-          <select class="form-select">
-            <option>坪數</option>
-            <option>20坪內</option>
-            <option>20-40坪</option>
-            <option>40坪以上</option>
-          </select>
-        </div>
-        <div class="col-6 col-md-2">
-          <select class="form-select">
-            <option>總價</option>
-            <option>500萬內</option>
-            <option>500-1000萬</option>
-            <option>1000萬以上</option>
-          </select>
-        </div>
-        <div class="col-12 col-md-1 d-grid">
-          <button class="btn btn-primary" type="submit">搜尋</button>
-        </div>
-      </form>
-    </div>
-
-    <!-- 精選推薦/近期拍賣等区块 -->
-    <div class="container mb-4">
-      <div class="row g-3">
-        <div class="col-12 col-md-6">
-          <div class="bg-light p-3 rounded">
-            <span class="badge bg-primary me-2">精選推薦</span>
-            <span>捷運火車旁大3房大樓 法拍精選物件 吳美慧</span>
-          </div>
-        </div>
-        <div class="col-12 col-md-6">
-          <div class="bg-light p-3 rounded">
-            <span class="badge bg-success me-2">近期拍賣</span>
-            <span>陽明溜冰場--近建工商圈2層美透 專業法拍首選 宋依璇</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 物件列表 -->
+  <div class="list">
     <div class="container">
-      <div class="row g-4">
-        <ListCard v-for="item in listData" :key="item.id" :item="item" />
-      </div>
-    </div>
+      <search class="hidden-xs-only"></search>
+      <MobileSearch class="hidden-sm-only hidden-md-only hidden-lg-only hidden-xl-only"></MobileSearch>
+      <div class="box">
+        <div class="left">
+          <div class="title hidden-xs-only">
+            <p>已為你找到 <span>29694</span> 間房屋</p>
+            <ul>
+              <li :class="{ active: activeIndex === 0 }" @click="setActive(0)">預設排序</li>
+              <li :class="{ active: activeIndex === 1 }" @click="setActive(1)">金額
+                <Icon :name="activeIndex === 1 ? 'up' : 'arrow-down'" size="12" />
+              </li>
+              <li :class="{ active: activeIndex === 2 }" @click="setActive(2)">坪數
+                <Icon :name="activeIndex === 2 ? 'up' : 'arrow-down'" size="12" />
+              </li>
+              <li :class="{ active: activeIndex === 3 }" @click="setActive(3)">刊登時間
+                <Icon :name="activeIndex === 3 ? 'up' : 'arrow-down'" size="12" />
+              </li>
+              <li :class="{ active: activeIndex === 4 }" @click="setActive(4)">
+                <el-select v-model="more" placeholder="Select">
+                  <el-option v-for="item in moreoptions" :key="item.value" :label="item.label" :value="item.value" />
+                </el-select>
+              </li>
+            </ul>
+          </div>
+          <ListItem v-for="(item, index) in 7" :key="index"></ListItem>
+          <div class="loadmore hidden-sm-only hidden-md-only hidden-lg-only hidden-xl-only">
+            查看更多好房
+          </div>
+          <div class="pagination hidden-xs-only">
+            <el-pagination background layout="prev, pager, next" :total="1000" prev-text="上一頁" next-text="下一頁" />
+          </div>
+        </div>
+        <div class="right hidden-xs-only">
+          <div class="diamondCard">
+            <p class="name">
+              <Icon name="diamond" size="20" />
+              <span>代標顧問</span>
+            </p>
+            <div class="info1">
+              <img src="@/assets/image/index/pic.svg" alt="" srcset="">
+              <p>實務經驗最紮實 王曉嵐</p>
+            </div>
+            <div class="info2">
+              <p>營業員編號：雄123506921</p>
+              <p>經紀業：104高欣仲介經紀有限公司</p>
+            </div>
+            <p class="tel">
+              <a href="tel:0972-199-982">0972-199-982轉12345</a>
+            </p>
+          </div>
 
-    <!-- 分页 -->
-    <div class="container my-4">
-      <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-          <li class="page-item disabled"><a class="page-link">上一頁</a></li>
-          <li class="page-item active"><a class="page-link">1</a></li>
-          <li class="page-item"><a class="page-link">2</a></li>
-          <li class="page-item"><a class="page-link">3</a></li>
-          <li class="page-item"><a class="page-link">4</a></li>
-          <li class="page-item"><a class="page-link">5</a></li>
-          <li class="page-item"><a class="page-link">下一頁</a></li>
-        </ul>
-      </nav>
+          <div class="guess">
+            <p class="title">猜你喜歡</p>
+            <Card v-for="(item, index) in 2" :key="index"></Card>
+          </div>
+
+          <div class="recentAuction">
+            <p class="title">近期拍賣</p>
+            <Card v-for="(item, index) in 1" :key="index"></Card>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import ListCard from '@/views/List/components/ListCard.vue'
+import search from './components/search.vue'
+import MobileSearch from './components/mobileSearch.vue'
+import ListItem from './components/listItem.vue'
+import Card from './components/card.vue'
+const more = ref('1')
+const moreoptions = [
+  {
+    value: '1',
+    label: '更多',
+  },
+  {
+    value: '2',
+    label: '更',
+  }
+]
+const activeIndex = ref(0)
 
-// 生成30条假数据
-const listData = ref(
-  Array.from({ length: 30 }, (_, i) => ({
-    id: i + 1,
-    title: `高雄市苓雅區武廟路${i + 1}號${Math.floor(Math.random() * 10) + 1}樓`,
-    desc: `捷運火車旁大3房大樓 法拍精選物件 吳美慧${i + 1}`,
-    area: `${30 + Math.floor(Math.random() * 30)}坪 | 公寓 | ${Math.floor(Math.random() * 12) + 1}F/12F | 有車位`,
-    price: `${500 + Math.floor(Math.random() * 1000)}`,
-    unitPrice: `${10 + Math.floor(Math.random() * 10)}萬/坪`,
-    tag: ["推薦", "精選", "一拍", "二拍", "應買", "持分", "疑似凶宅"][i % 7],
-    img: `https://source.unsplash.com/400x300/?house,home,building&sig=${i}`
-  }))
-)
+const setActive = (index) => {
+  activeIndex.value = index
+}
 </script>
+<style scoped lang="scss">
+.list {
+  background-color: #fff;
+
+  .box {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 10px;
+      font-size: 16px;
+      color: #333;
+
+      p {
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 36px;
+
+        span {
+          font-weight: bold;
+          font-size: 24px;
+          color: #EA5513;
+        }
+      }
+
+      ul {
+        display: flex;
+        gap: 20px;
+
+        li {
+          cursor: pointer;
+          font-size: 14px;
+
+
+
+          .el-icon {
+            vertical-align: text-top
+          }
+        }
+
+        li:hover {
+          color: #EA5513;
+        }
+
+        li.active {
+          color: #EA5513;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .right {
+    .diamondCard {
+      width: 232px;
+      background: linear-gradient(90deg, #FFF6D1 0%, #FFD992 100%);
+      border-radius: 4px;
+      padding: 8px 8px;
+      cursor: pointer;
+
+      .name {
+        span {
+          margin-left: 8px;
+          font-size: 16px;
+          color: #333;
+          font-weight: bold;
+          line-height: 24px;
+        }
+      }
+
+      div.info1 {
+        position: relative;
+
+        p {
+          position: absolute;
+          bottom: 0;
+          line-height: 33px;
+          width: 100%;
+          background-color: #EA5513;
+          font-size: 14px;
+          font-weight: bold;
+          text-align: center;
+          color: #fff;
+        }
+      }
+
+      div.info2 {
+        background-color: #FFAE8B;
+        font-size: 12px;
+        color: #333;
+        padding: 8px 13px;
+        border-bottom-right-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+
+      .tel {
+        text-align: center;
+        margin-top: 9px;
+
+        a {
+          font-size: 19px;
+          font-weight: bold;
+          line-height: 24px;
+          color: #333 !important;
+        }
+      }
+    }
+
+    .diamondCard:hover {
+      box-shadow: 2px 2px 4px 0px rgb(0 0 0 / 10%);
+    }
+
+    .guess,
+    .recentAuction {
+      .title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        line-height: 34px;
+        margin-top: 24px;
+        margin-bottom: 6px;
+      }
+    }
+  }
+
+  .pagination {
+    margin-top: 24px;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .list {
+    .container {
+      max-width: unset;
+      width: 100%;
+      padding: 0.2rem;
+    }
+
+    .loadmore {
+      font-size: 0.24rem;
+      color: #0566B3;
+      text-align: center;
+      margin-top: 0.24rem;
+      margin-bottom: 0.35rem;
+    }
+  }
+}
+</style>
+<style lang="scss">
+.el-pager li,
+.el-pagination button {
+  color: #0566B3;
+  border: 1px solid;
+  border-right: 0;
+  border-color: #DEE2E6;
+  background: #fff !important;
+  margin: 0 !important;
+}
+
+.el-pagination button {
+  width: 74px;
+  text-align: center;
+}
+
+.el-pagination button:last-child {
+  border-right: 1px solid #DEE2E6
+}
+
+.el-pager li {
+  border-radius: 0;
+}
+
+.el-pager li.is-active {
+  background-color: #0566B3 !important;
+  color: #fff;
+  border-color: #0566B3;
+}
+
+.list .el-select__wrapper {
+  width: 50px;
+  font-size: 14px;
+  color: #333333;
+  box-shadow: none;
+  line-height: unset;
+  height: unset;
+  min-height: unset;
+  background: unset;
+  border-radius: unset;
+  padding: 0;
+}
+
+.list .el-select__placeholder,
+.list .el-select__caret {
+  color: #333333;
+}
+
+.list .el-select__placeholder:hover {
+  color: #EA5513;
+}
+
+.list .el-select__wrapper.is-hovering:not(.is-focused) {
+  box-shadow: none !important;
+}
+
+:focus-visible {
+  outline: none !important;
+}
+</style>

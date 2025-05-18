@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="container">
+    <div class="container hidden-xs-only">
       <div class="left">
         <div class="logo">
           <img src="@/assets/image/logo-mywoo-color.png" alt="MYWOO買屋網" class="logo" srcset="">
@@ -19,6 +19,11 @@
         <router-link to="/">房產大小事</router-link>
       </div>
     </div>
+    <div class="container mobile hidden-sm-only hidden-md-only hidden-lg-only hidden-xl-only">
+      <img src="@/assets/image/icons/left.svg" alt="">
+      <span>{{ activeName }}</span>
+      <img src="@/assets/image/icons/navbar.svg" alt="">
+    </div>
   </div>
 </template>
 <script setup>
@@ -27,6 +32,7 @@ import { RouterView, useRouter, useRoute } from 'vue-router'
 const route = useRoute();
 const $router = useRouter()
 const activeId = ref(null);
+const activeName = ref(null);
 const navItems = ref([
   { id: 0, text: '新曝光', path: '/home' },
   { id: 1, text: '找好房', path: '/list' },
@@ -40,6 +46,11 @@ const navItems = ref([
 
 onMounted(() => {
   activeId.value = navItems.value.findIndex(item => item.path === route.path)
+  navItems.value.map(item => {
+    if (item.id === activeId.value) {
+      activeName.value = item.text
+    }
+  })
 })
 
 const onNavTo = (id, path) => {
@@ -50,7 +61,6 @@ const onNavTo = (id, path) => {
 <style lang="scss" scoped>
 .header {
   background: #F5F6F7;
-  // min-width: 1200px;
 
   .container {
     display: flex;
@@ -95,6 +105,27 @@ const onNavTo = (id, path) => {
       color: #333333;
       font-size: 14px;
       margin-right: 20px;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .mobile {
+    display: flex;
+    line-height: unset !important;
+    background: #fff !important;
+    height: 0.8rem;
+    border-bottom: 1px solid #e1e1e1;
+    align-items: center;
+    padding: 0 0.1rem;
+
+    img {
+      width: 0.4rem;
+    }
+
+    span {
+      font-size: 0.32rem;
+      color: #333;
     }
   }
 }

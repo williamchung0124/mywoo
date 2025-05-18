@@ -55,18 +55,23 @@ li {
   background: #eee;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 767px) {
   html {
     // font-size: 13.3333vw;
-    /* 750px时100px，相当于100/750*100vw */
+    /* 767px时100px，相当于100/750*100vw */
   }
 
-  // .el-container {
-  //   min-width: unset !important;
-  // }
+  .el-container {
+    min-width: unset !important;
+  }
 
-  // .container {
-  //   max-width: unset;
-  //   margin: unset;
-  // }
+  .el-header {
+    height: 0.8rem !important;
+    line-height: 0.8rem !important;
+  }
+
+  .container {
+    max-width: unset;
+    margin: unset;
+  }
 }

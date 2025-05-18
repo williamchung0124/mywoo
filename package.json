@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "bootstrap": "^5.3.5",
+    "@vitejs/plugin-legacy": "^6.1.1",
     "element-plus": "^2.9.7",
     "swiper": "^11.2.6",
     "vite-prerender-plugin": "^0.5.7",
