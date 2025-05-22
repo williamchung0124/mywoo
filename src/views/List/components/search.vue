@@ -450,6 +450,7 @@ const resetFilters = () => {
 
   .el-select {
     margin-left: 18px;
+    margin-top: 9px;
 
     .el-select__placeholder {
       color: #EA5513 !important;
@@ -488,6 +489,7 @@ const resetFilters = () => {
 
     .nolimit {
       margin-left: 0;
+      margin-top: -4px;
     }
   }
 }

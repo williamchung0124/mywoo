@@ -34,6 +34,7 @@
         <div class="price">
           <p>總價 <span>1680</span> <span>萬</span></p>
           <p><i class="hidden-xs-only">單價</i><i>13.5</i>萬/坪</p>
+          <p>預估三拍：<i>415</i>萬</p>
         </div>
       </div>
     </div>
@@ -73,7 +74,6 @@ const handleClick = (index) => {
 .listItem {
   cursor: pointer;
   display: flex;
-  justify-content: space-between;
   border-bottom: 1px solid #e1e1e1;
   gap: 20px;
   padding-top: 32px;
@@ -119,6 +119,8 @@ const handleClick = (index) => {
   }
 
   .right {
+    width: 100%;
+
     .box {
       display: flex;
       justify-content: space-between;
@@ -217,9 +219,15 @@ const handleClick = (index) => {
           }
         }
 
-        p:last-child {
+        p:last-child,
+        p:nth-child(2) {
           font-size: 16px;
           color: #666;
+          margin-top: 5px;
+        }
+
+        p:last-child {
+          margin-top: 3px;
         }
       }
     }
@@ -273,15 +281,32 @@ const handleClick = (index) => {
             font-size: 0.24rem !important;
           }
         }
+
+        p:last-child,
+        p:nth-child(2) {
+          font-size: 0.18rem !important;
+          margin-top: 0 !important;
+        }
+
       }
     }
 
     .title {
-      font-size: 0.28rem !important;
       word-wrap: break-word;
       word-break: break-word;
       white-space: normal;
-      line-height: 0.32rem;
+      line-height: 0.12rem;
+      margin-bottom: 0.25rem;
+      margin-top: -0.15rem;
+
+      a {
+        font-size: 0.28rem !important;
+      }
+    }
+
+    .left {
+      min-width: 2.74rem !important;
+      height: 2.04rem !important;
     }
 
     .left img {

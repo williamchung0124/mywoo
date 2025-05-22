@@ -4,7 +4,7 @@
       <div class="footer-top">
         <div class="logo-section">
           <Icon name="image 2.svg" size="28" />
-          <img src="@/assets/image/icons/icon-logo.svg" alt="MYWOO買屋網" class="logo" />
+          <img src="@/assets/image/icon-logo.png" alt="MYWOO買屋網" class="logo" />
         </div>
         <ul class="nav-section">
           <li><a href="">關於買屋網</a></li>
@@ -167,6 +167,13 @@ a:hover {
     a:last-child {
       margin: 0 12px 0 3px;
     }
+
+    .logo-section {
+      .logo {
+        width: 140px;
+        height: 46px;
+      }
+    }
   }
 }
 
@@ -189,7 +196,7 @@ a:hover {
       .nav-section {
         flex-wrap: wrap;
         gap: 0;
-        margin-top: 0.5rem;
+        margin-top: 0.3rem;
 
         a {
           display: inline-block;

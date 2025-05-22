@@ -1,20 +1,24 @@
 /*
  * @Date: 2025-04-03 14:11:20
  * @LastEditors: “jiamin” “jiamin@gritworld.com”
- * @LastEditTime: 2025-05-11 01:48:05
+ * @LastEditTime: 2025-05-18 19:30:26
  * @FilePath: /mywoo/vite.config.js
  */
+// 添加环境变量支持
+
+// 加载环境变量文件
+// dotenv.config()
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import legacy from "@vitejs/plugin-legacy"
 import path from 'path'
+// import dotenv from 'dotenv'
 
 export default defineConfig({
   plugins: [
     vue(),
     legacy({
-      targets: ["ie>=11"],
-      additionalLegacyPolyfills: ["regenerator-runtime/runtime"],
+      targets: ['defaults', 'not IE 11']
     })
   ],
   resolve: {
@@ -54,5 +58,12 @@ export default defineConfig({
         rewrite: path => path.replace(/^\/api/, '') // 去掉请求前缀
       }
     }
+  },
+
+  // 添加 preview 配置以兼容阿里云部署
+  preview: {
+    port: 5000, // 预览时的端口
+    strictPort: true, // 如果端口被占用则报错
+    host: '0.0.0.0' // 允许外部访问
   }
 })

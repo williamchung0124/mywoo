@@ -4,7 +4,7 @@
       <search class="hidden-xs-only"></search>
       <MobileSearch class="hidden-sm-only hidden-md-only hidden-lg-only hidden-xl-only"></MobileSearch>
       <div class="box">
-        <div class="left">
+        <div class="left" style="flex: 1;">
           <div class="title hidden-xs-only">
             <p>已為你找到 <span>29694</span> 間房屋</p>
             <ul>
@@ -78,10 +78,6 @@ const moreoptions = [
   {
     value: '1',
     label: '更多',
-  },
-  {
-    value: '2',
-    label: '更',
   }
 ]
 const activeIndex = ref(0)
@@ -277,7 +273,7 @@ const setActive = (index) => {
 }
 
 .list .el-select__wrapper {
-  width: 50px;
+  width: 64px;
   font-size: 14px;
   color: #333333;
   box-shadow: none;

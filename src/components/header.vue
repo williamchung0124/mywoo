@@ -13,8 +13,8 @@
         </ul>
       </div>
       <div class="right">
-        <router-link to="/login" class="login">登入</router-link>
-        <router-link to="/register">註冊</router-link>
+        <!-- <router-link to="/login" class="login">登入</router-link> -->
+        <!-- <router-link to="/register">註冊</router-link> -->
         <router-link to="/">法拍專業課程</router-link>
         <router-link to="/">房產大小事</router-link>
       </div>
