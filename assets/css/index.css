@@ -1,0 +1,113 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  font-weight: normal;
+}
+
+.el-header,
+.el-main {
+  padding: 0 !important;
+  height: unset !important;
+}
+
+.el-header {
+  height: 36px !important;
+}
+
+body {
+  font-family: Arial, 微軟正黑體, "Microsoft JhengHei", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+i {
+  font-style: normal;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.el-container {
+  min-width: 1200px !important;
+}
+
+.el-main {
+  background: #eee;
+}
+
+.show-xs-only{
+  display: none;
+}
+.hidden-xs-only {
+  display: inline-block;
+}
+
+input,select,textarea,button {
+  outline: none;
+  background: transparent;
+}
+@media (max-width: 767px) {
+ 
+
+  .el-container {
+    min-width: unset !important;
+  }
+
+  .el-header {
+    height: 0.8rem !important;
+    line-height: 0.8rem !important;
+  }
+
+  .container {
+    max-width: unset;
+    margin: unset;
+  }
+
+  .show-xs-only{
+    display: block !important;
+  }
+
+  .hidden-xs-only {
+    display: none !important;
+  }
+  .header-bar h1{
+    font-size: 0.32rem;
+    color: #333;
+    font-weight: 400;
+  }
+  .header-bar{
+    background: #fff;
+    display: flex !important;
+    justify-content: space-between;
+    height: 0.8rem;
+    align-items: center;
+    padding: 0 0.2rem;
+    border-bottom: 1px solid #e1e1e1;
+    margin-bottom: 0.2rem;
+  }
+  .header-bar img{
+    width: 0.4rem;
+    height: 0.4rem;
+  }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./assets/image/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>您好，歡迎來到買屋網</title>
+  <link rel="stylesheet" href="./assets/css/index.css">
+  <link rel="stylesheet" href="./assets/css/header.css">
+  <script src="./assets/js/resize.js"></script>
+
+</head>
+
+<body>
+  <div class="el-container">
+    <div class="header .el-header">
+      <div class="container hidden-xs-only">
+        <div class="left">
+          <div class="logo">
+            <img src="../assets/image/logo-mywoo-color.png" alt="MYWOO買屋網" class="logo">
+          </div>
+          <ul class="nav-menu" id="nav-menu">
+          </ul>
+        </div>
+        <div class="right">
+          <a href="/">法拍專業課程</a>
+          <a href="/">房產大小事</a>
+        </div>
+      </div>
+    </div>
+
+    <main class="el-main">home</main>
+
+    <div id="footer"></div>
+  </div>
+
+  <script src="./assets/js/header.js"></script>
+  <script>
+    fetch('/public/footer.html')
+      .then(res => res.text())
+      .then(html => document.getElementById('footer').innerHTML = html);
+  </script>
+  <script>
+    window.onunload = () => {
+      if (window.ResponsiveFontSizeHandler && window.ResponsiveFontSizeHandler.stop) {
+        window.ResponsiveFontSizeHandler.stop();
+      }
+    };
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+    }
+
+    html {
+      font-size: 13.33vw;
+    }
+
+    .mobile-search {
+      padding: 0.3rem 0.2rem;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .back-button {
+      width: 18px;
+      height: 18px;
+    }
+
+    .back-button img {
+      width: 18px;
+      height: 18px;
+      vertical-align: text-top;
+    }
+
+    .search-input-container {
+      flex: 1;
+      font-size: 0;
+      background-color: #E9E9E9;
+      padding: 6px 0;
+      border-radius: 2px;
+      position: relative;
+    }
+
+    .el-icon svg {
+      width: 12px;
+      height: 12px;
+      position: absolute;
+      fill: #999;
+      top: 9px;
+      left: 90px;
+    }
+
+    .city-select {
+      padding: 0 5px;
+      font-size: 14px;
+      background-color: #E9E9E9;
+      color: #999;
+      width: 28%;
+    }
+
+    ::placeholder {
+      color: #999;
+    }
+
+    .search-input {
+      border-left: 1px solid #ccc;
+      flex: 1;
+      padding: 0;
+      margin-left: 5px;
+      padding-left: 22px;
+      font-size: 14px;
+      width: 70%;
+      box-sizing: border-box;
+      background-color: #E9E9E9;
+      color: #333;
+    }
+
+    .search-button {
+      font-size: 14px;
+      background-color: #0566B3;
+      color: white;
+      height: 29px;
+      border: none;
+      border-radius: 2px;
+    }
+
+    .hot-search h3 {
+      font-size: 16px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .hot-icon img {
+      width: 16px;
+      height: 16px;
+      vertical-align: text-top;
+    }
+
+    .hot-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      padding: 4px 8px;
+      font-size: 13px;
+      background-color: #E9E9E9;
+      border: none;
+      border-radius: 4px;
+      color: #333;
+    }
+
+    .search-result {
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    .no-result img,
+    .loading img {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 16px;
+    }
+
+    .no-result p,
+    .loading p {
+      font-size: 14px;
+      color: #666;
+    }
+
+    select,
+    input,
+    button {
+      outline: none;
+      border: none;
+    }
+  </style>
+  <script src="../assets/js/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="mobile-search">
+    <!-- 搜索栏 -->
+    <div class="search-bar">
+      <span class="back-button">
+        <img src="../assets/image/icons/icon-back.svg" alt="" srcset="">
+      </span>
+      <div class="search-input-container">
+        <select class="city-select">
+          <option value="高雄市">高雄市</option>
+          <option value="台北市">台北市</option>
+          <option value="台中市">台中市</option>
+        </select>
+        <i class="el-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+            <path fill="#999"
+              d="m795.904 750.72 124.992 124.928a32 32 0 0 1-45.248 45.248L750.656 795.904a416 416 0 1 1 45.248-45.248zM480 832a352 352 0 1 0 0-704 352 352 0 0 0 0 704">
+            </path>
+          </svg>
+        </i>
+        <input type="text" class="search-input" placeholder="請輸入物件關鍵字...">
+      </div>
+      <button class="search-button">搜尋</button>
+    </div>
+
+    <!-- 热门搜索 -->
+    <div class="hot-search">
+      <h3>熱門搜尋 <span class="hot-icon">
+          <img src="../assets/image/icons/icon-hots.svg" alt="" srcset="">
+        </span></h3>
+      <div class="hot-tags">
+        <button class="tag">東方文華</button>
+        <button class="tag">豐邑建設</button>
+        <button class="tag">常春藤學校</button>
+        <button class="tag">苓雅區學校</button>
+        <button class="tag">文華飯店</button>
+      </div>
+    </div>
+
+    <!-- 搜索结果 -->
+    <div class="search-result" style="display: none;">
+      <div class="no-result" style="display: none;">
+        <img src="../assets/image/icons/icon-find.svg" alt="无结果">
+        <p>暫無符合條件的房源
+          <br>請重新搜尋房源
+        </p>
+      </div>
+      <div class="loading" style="display: none;">
+        <img src="../assets/image/icons/icon-loading.svg" alt="加载中">
+        <p>資料讀取中...</p>
+      </div>
+    </div>
+
+  </div>
+  <script>
+    $(document).ready(function () {
+      // 点击热门标签时，将标签内容填入搜索框
+      $('.tag').click(function () {
+        const tagText = $(this).text();
+        $('.search-input').val(tagText);
+      });
+
+      // 点击搜索按钮时，显示加载动画并模拟搜索结果
+      $('.search-button').click(function () {
+        const searchText = $('.search-input').val();
+        if (searchText) {
+          $('.search-result').show();
+          $('.loading').show();
+          $('.no-result').hide();
+
+          // 模拟加载过程
+          setTimeout(() => {
+            $('.loading').hide();
+            // 模拟无结果
+            $('.no-result').show();
+          }, 500);
+        } else {
+          alert('请输入搜索内容！');
+        }
+      });
+
+      // 返回按钮功能
+      $('.back-button').click(function () {
+        window.history.back();
+      });
+    });
+  </script>
+</body>
+
+</html>
