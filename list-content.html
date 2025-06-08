@@ -8,8 +8,12 @@
   <title>您好，歡迎來到買屋網</title>
   <link rel="stylesheet" href="./assets/css/index.css">
   <link rel="stylesheet" href="./assets/css/header.css">
+  <link rel="stylesheet" href="./assets/css/footer.css">
+  <link rel="stylesheet" href="./assets/css/list-content.css">
+  <link rel="stylesheet" href="./assets/css/swiper.min.css">
+  <link rel="stylesheet" href="./assets/css/viewer.min.css">
+  <!-- <link rel="stylesheet" href="./assets/css/bootstrap.min.css"> -->
   <script src="./assets/js/resize.js"></script>
-
 </head>
 
 <body>
@@ -36,17 +40,853 @@
     </div>
 
     <main class="el-main">
-      listcontent
+      <div class="list-content">
+        <div class="banner">
+          <div class='container'>
+            <div class="breadcrumb hidden-xs-only">
+              首頁 > 高雄市 > 苓雅區 > 建國北路 > 住宅 > 整層住家 > <i id="houseId">R18192419</i>
+            </div>
+            <div class="houseContent">
+              <div class="left hidden-xs-only">
+                <div class="title" id="houseTitle">
+                  金龍風暴!法拍好貸! ✅ 科工館旁精選大3房美寓🏠 代標千萬經紀人 陳慧瑜
+                </div>
+                <div class="swiper main-swiper">
+                  <div class="swiper-wrapper" id="mainSwiperWrapper">
+                    <!-- Main slides will be populated by JS -->
+                  </div>
+                </div>
+                <div class="swiper thumbs-swiper">
+                  <div class="swiper-wrapper" id="thumbsSwiperWrapper">
+                    <!-- Thumbnails will be populated by JS -->
+                  </div>
+                  <div class="swiper-button-next swiper-button-next"></div>
+                  <div class="swiper-button-prev swiper-button-prev"></div>
+                </div>
+              </div>
+              <div class="left show-xs-only">
+                <div class="pic-info" id="pic-info">
+                  <div id="imagePreview">
+                    <!-- Main slides will be populated by JS -->
+                  </div>
+                  <div class="count" id="pic-count-info">
+                    <span id="pic-count"></span>
+                    <img src="./assets/image/icons/icon-arrowrw.svg" alt="" srcset="">
+                  </div>
+                </div>
+                <div class="title" id="houseTitle">
+                  金龍風暴!法拍好貸! ✅ 科工館旁精選大3房美寓🏠 代標千萬經紀人 陳慧瑜
+                </div>
+              </div>
+              <div class="right">
+                <div class="icon">
+                  <a href="#" id="favoriteBtn">
+                    <img src="./assets/image/icons/icon-favorite.svg" id="favoriteIcon" />
+                    收藏 (<span id="collectCount">99</span>)
+                  </a>
+                  <a href="#">
+                    <img src="./assets/image/icons/icon-fb-bg.svg">分享
+                  </a>
+                  <a href="#">
+                    <img src="./assets/image/icons/icon-line.svg">分享
+                  </a>
+                </div>
+
+                <div class="dic">
+                  <p>
+                    <span>總價</span>
+                    <span><i class="price" id="totalPrice">666</i>萬</span>
+                  </p>
+                  <p class="unitPrice">單價13.5萬/坪</p>
+                </div>
+
+                <div class='dic'>
+                  <p>
+                    <span>公告建坪</span>
+                    <span><i class='size' id="announcementFlat">36.4</i>坪 (含增建)</span>
+                  </p>
+                  <div style="margin-top: 8px;">
+                    <p>
+                      <span>總坪數</span>
+                      <span><i class='size' id="totalMean">36.4</i>坪</span>
+                    </p>
+                    <p class="mr">
+                      <span>地坪</span>
+                      <span><i class='size' id="horizon">8</i>坪</span>
+                    </p>
+                  </div>
+                </div>
+
+                <div class='dic'>
+                  <div>
+                    <p>
+                      <span>類型</span>
+                      <span><i class="q" id="houseType">公寓</i></span>
+                    </p>
+                    <p class="mr">
+                      <span>屋齡</span>
+                      <span><i class="q" id="houseAge">43</i>年</span>
+                    </p>
+                  </div>
+                  <p style="margin-top: 8px;">
+                    <span>地址</span>
+                    <span class="adress">
+                      <img src="./assets/image/icons/icon-location-color.svg" style="vertical-align: middle;">
+                      <i id="houseAddress">高雄市苓雅區武廟路70號4樓</i>
+                    </span>
+                  </p>
+                </div>
+
+                <div class='dic status'>
+                  <p>
+                    <span>開標日</span>
+                    <span>
+                      <i class="blue">114/05/05(二)</i>
+                      <i class="blue">一拍</i>
+                    </span>
+                  </p>
+                  <p style="margin-top: 8px;">
+                    <span>更多信息</span>
+                    <span>
+                      <i class="blue">有車位</i>
+                      <i class="red">疑似凶宅</i>
+                      <i class="red">持分</i>
+                    </span>
+                  </p>
+                </div>
+
+                <div class="dic">
+                  <div class="info">
+                    <div class="avatar">
+                      <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="經紀人">
+                    </div>
+                    <div class="desc">
+                      <p><span class="lable">代標顧問</span><span class="name">陳慧瑜</span></p>
+                      <p><span class="lable">經紀業</span><span class="company">高雄好屋網房屋仲介公司</span></p>
+                    </div>
+                  </div>
+                  <div class="btn">
+                    <div class="phone">
+                      <img src="./assets/image/icons/icon-phone.svg" alt="">
+                      <a href="tel:0911151441" class="button">
+                        0911-151441
+                      </a>
+                    </div>
+                    <div class="line">
+                      <img src="./assets/image/icons/icon-line.svg" alt="">
+                      <a href="#" class="button">
+                        Line 加好友
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 锚点 -->
+        <div class="tabs" id="tabs">
+          <div class="bg container">
+            <div class="hr">
+              <ul class="tab-menu">
+                <li class="active"><a href="#housePicture">房屋圖片</a></li>
+                <li><a href="#houseDescription">房屋介紹</a></li>
+                <li><a href="#location">地圖位置</a></li>
+                <li><a href="#question">我想提問</a></li>
+                <li><a href="#priceInfo">實價登錄資訊</a></li>
+                <li><a href="#nearbyObjects">附近物件</a></li>
+              </ul>
+              <div class="contact">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="經紀人">
+                <span>陳慧瑜</span>
+                <a href="tel:0911151441" class="btn-phone">
+                  0911-151441
+                </a>
+                <a href="#" class="btn-line">
+                  <img src="./assets/image/icons/icon-line.svg" alt="">加好友
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box" id="house-content">
+          <div class="bg container">
+            <!-- 房屋图片 -->
+            <div class="housePicture" id="housePicture">
+              <div class="masonry-item">
+                <img src="./assets/image/list/oc1.svg" alt="房屋圖片">
+                <img src="./assets/image/list/oc2.svg" alt="房屋圖片">
+                <img src="./assets/image/list/oc3.svg" alt="房屋圖片">
+              </div>
+            </div>
+            <!-- 房屋介绍 -->
+            <div class="houseDescription" id="houseDescription">
+              <div class="recordCase">
+                <p class="subtitle">案件筆錄</p>
+                <p class="info" id="recordCase">
+                  1‧113年5月6日查封時，債務人陳稱自行居住使用，無出租出借。113年6月20日現場執行時，據債務人陳稱由其與家人自行居住，三房二廳二衛，無管委會，無配屬停車位、停車格，每3個月繳水塔清潔費300元，每1-2年繳化糞池清潔費由住戶均分。據地政人員表示，前後鐵窗為增建。本件拍定後除編號1建物依現況點交外，其餘均不點交。至於實際詳情及使用現況，請投標人自行查明。<br>2‧本件建物據債務人稱自住；惟實際使用情形，投標人應自行查明。<br>3‧編號2之建物未辦建物所有權第一次登記，不能依權利移轉證書辦理所有權登記，請投標人注意，又該建物占用之土地不在拍賣範圍。<br>4‧請投標人自行查明是否有未繳納之工程受益費、差額地價，於辦理移轉時，應自行處理工程受益費、差額地價繳清事宜。<br>5‧經拍賣之土地，如拍定價額不足扣繳土地增值稅時，應由拍定人代為繳清差額後再行發給權利移轉證書，請投標人注意。<br>6‧本件債務人是否有積欠大樓管理費或公共基金、系爭標的有無管委會、規約暨詳細內容為何，均請投標人自行查明。<br>7‧本件拍賣標的物依強制執行法第113條準用第69條之規定，拍賣物買受人就物之瑕疵無擔保請求權。請投標人自行查明，不得於拍定後主張。<br>8‧本件勘估標的據債務人陳稱並無海砂屋、輻射屋、地震受創、火災受損、非自然死亡等特殊情事之資訊，惟實際使用情形投標人應自行查明。<br>9‧如二人以上共同投標，日後欲領回保證金時，除有符合司法院訂定「地方法院民事執行處撥匯案款參考要點」第4點第1項但書、第2項規定情形外，本國人僅以共同受款人之「聯名帳戶」為限，請投標人自行斟酌注意。《法院案號：高雄地方法院案號：113年度司執齊字第55121號，清償票款》◎投標地點：高雄市前鎮區中山二路91號18樓-8，洽詢電話：(07)335-1278
+                </p>
+              </div>
+              <div class="supplementaryStatement">
+                <p class="subtitle">補充說明</p>
+                <p class="info" id="supplementaryStatement">
+                  金服公司📢 💁<br>便宜買房!法拍好貸! ✅近鳳山高中精選3房美寓🏠<br>⛳️高雄市鳳山區文學街16-3號4樓👍👍👍<br>📆03/12 (3)  第1拍
+                  (有點交)<br>❤️【底價】355萬
+                  / 保証金71萬<br>💛【待標樓層】4樓/總樓層5樓<br>💚【房屋坪數】建坪26坪/主建物25坪<br>💜房屋格局:  3房2廳2衛<br>💜交通機能:
+                  正義車站車程3分鐘、國道1號車程5分鐘<br>💜生活機能：7-11、全家、五金行<br>💜鄰近學校：鳳山高中<br>💜公園綠地:  寶業治洪公園
+                </p>
+              </div>
+            </div>
+            <!-- 地理位置 -->
+            <div class="location hidden-xs-only" id="location">
+              <p class="subtitle">地圖位置</p>
+              <div class="locationBox">
+                <div class="left">
+                  <img src="./assets/image/list/map.svg" alt="地圖位置">
+                </div>
+                <div class="right" id="location-menu">
+                  <p class="subtitle">周邊</p>
+                  <ul id="facilityList">
+                    <li>
+                      <p><img src="./assets/image/icons/icon-traffic.svg"></p>
+                      <p class="name">交通</p>
+                    </li>
+                    <li>
+                      <p><img src="./assets/image/icons/icon-school.svg"></p>
+                      <p class="name">學校</p>
+                    </li>
+                    <li>
+                      <p><img src="./assets/image/icons/icon-shopping.svg"></p>
+                      <p class="name">購物</p>
+                    </li>
+                    <li>
+                      <p><img src="./assets/image/icons/icon-restaurant.svg"></p>
+                      <p class="name">餐飲</p>
+                    </li>
+                    <li>
+                      <p><img src="./assets/image/icons/icon-hospital.svg"></p>
+                      <p class="name">醫院</p>
+                    </li>
+                    <li>
+                      <p><img src="./assets/image/icons/icon-park.svg"></p>
+                      <p class="name">公園</p>
+                    </li>
+                    <li>
+                      <p><img src="./assets/image/icons/icon-bank.svg"></p>
+                      <p class="name">銀行</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="right" id="location-info">
+                  <div class="location-header">
+                    <p class="subtitle"></p>
+                    <p>
+                      <img src="./assets/image/icons/icon-arrowL.svg" alt="" srcset="">
+                      返回
+                    </p>
+                  </div>
+                  <ul id="info-list">
+                    <li><span>橋頭派出所</span><span>432公尺</span></li>
+                    <li><span>明德新村公車站</span><span>432公尺</span></li>
+                    <li><span>明德新村北門</span><span>432公尺</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 我想提问 -->
+            <div class="question hidden-xs-only" id="question">
+              <p class="subtitle">我想提問</p>
+              <div class="question-form">
+                <form id="questionForm">
+                  <div class="form-group">
+                    <input type="text" id="name" name="name" required placeholder="您的稱呼 (必填)">
+                    <span class="sex">
+                      <input type="radio" checked id="male" name="gender" value="male" required>
+                      <label for="male">先生</label>
+                      <input type="radio" id="female" name="gender" value="female" required>
+                      <label for="female">女士</label>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <input type="tel" id="phone" name="phone" required placeholder="請輸入您的手機號 (必填)">
+                  </div>
+                  <div class="form-group textarea-group">
+                    <textarea id="question" name="question" maxlength="50" placeholder="點擊右方可以快速輸入問題"></textarea>
+                    <span class="char-count">0/50</span>
+                  </div>
+                  <button type="submit" class="submit-btn">送出提問</button>
+                </form>
+                <div class="quick-questions">
+                  <p class="change-btn">換一換<img src="./assets/image/icons/icon-refresh.svg" alt=""></p>
+                  <div class="questions-list">
+                    <button class="question-btn">這個小區如何？</button>
+                    <button class="question-btn">交通與上學方便嗎？</button>
+                    <button class="question-btn">房子屋況如何？</button>
+                    <button class="question-btn">附近商圈如何？</button>
+                    <button class="question-btn">最近房價上漲還是下跌？</button>
+                    <button class="question-btn">法拍原因是什麼？</button>
+                    <button class="question-btn">附近商圈如何？</button>
+                    <button class="question-btn">最近房價上漲還是下跌？</button>
+                    <button class="question-btn">法拍原因是什麼？</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box module">
+          <div class="bg container">
+            <div class="message" id="priceInfo">
+              <p class="title">實價登錄資訊</p>
+              <ul id="priceInfoList">
+                <!-- 数据将通过 jQuery 动态填充 -->
+              </ul>
+              <div class="transaction-table hidden-xs-only">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>成交日期</th>
+                      <th>成交信息</th>
+                      <th>建坪</th>
+                      <th>單價</th>
+                      <th>總價</th>
+                    </tr>
+                  </thead>
+                  <tbody id="transactionData">
+                    <!-- 数据将通过 jQuery 动态填充 -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="nearbyObjects" id="nearbyObjects">
+              <div class="title">附近物件</div>
+              <div class="property-swiper  hidden-xs-swiper-only">
+                <div class="swiper-container">
+                  <div class="swiper-wrapper" id="propertyList">
+                    <!-- 数据将通过 jQuery 动态填充 -->
+                  </div>
+                  <!-- 自定义导航按钮 -->
+                  <div class="swiper-button-prev custom-prev"></div>
+                  <div class="swiper-button-next custom-next"></div>
+                </div>
+              </div>
+              <div class="show-xs-only">
+                <div class="listItem">
+                  <div class="left">
+                    <img src="assets/image/list/pic.svg" alt="">
+                    <p class="listTag">精選</p>
+                  </div>
+                  <div class="right">
+                    <div class="box">
+                      <div class="title">
+                        <a href="./list-content.html">捷運火車旁大3房大樓 法拍精選物件 吳美慧</a>
+                      </div>
+                    </div>
+                    <div class="box">
+                      <div class="info">
+                        <p>坪數 56坪 | 土地 | 1F/1F | 屋齡 34年</p>
+                        <p>
+                          <img src="assets/image/icons/icon-location-color.svg" alt="">凱旋門 | 三民區復興一路163號5樓凱旋門大廈
+                        </p>
+                        <p>
+                          <span>開標日 : 114/05/05(二)</span>
+                          <span>一拍</span>
+                        </p>
+                      </div>
+                      <div class="price">
+                        <p>總價 <i>1680</i> <i>萬</i></p>
+                        <p>13.5萬/坪</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="listItem">
+                  <div class="left">
+                    <img src="assets/image/list/pic.svg" alt="">
+                    <p class="listTag">精選</p>
+                  </div>
+                  <div class="right">
+                    <div class="box">
+                      <div class="title">
+                        <a href="./list-content.html">捷運火車旁大3房大樓 法拍精選物件 吳美慧</a>
+                      </div>
+                    </div>
+                    <div class="box">
+                      <div class="info">
+                        <p>坪數 56坪 | 土地 | 1F/1F | 屋齡 34年</p>
+                        <p>
+                          <img src="assets/image/icons/icon-location-color.svg" alt="">凱旋門 | 三民區復興一路163號5樓凱旋門大廈
+                        </p>
+                        <p>
+                          <span>開標日 : 114/05/05(二)</span>
+                          <span>一拍</span>
+                        </p>
+                      </div>
+                      <div class="price">
+                        <p>總價 <i>1680</i> <i>萬</i></p>
+                        <p>13.5萬/坪</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
     </main>
 
-    <div id="footer"></div>
-  </div>
+    <footer class="footer-wrapper">
+      <div class="footer-inner container">
+        <div class="footer-top">
+          <div class="logo-section">
+            <img src="assets/image/icon-logo.png" alt="MYWOO買屋網" class="logo" />
+          </div>
+          <ul class="nav-section">
+            <li><a href="#">關於買屋網</a></li>
+            <li><a href="#">物件列表</a></li>
+            <li><a href="#">房產大小事</a></li>
+            <li><a href="#">最新消息</a></li>
+            <li><a href="#">常見問題</a></li>
+            <li><a href="#">業務型象</a></li>
+            <li><a href="#">跟隨我們</a></li>
+          </ul>
+        </div>
 
+        <div class="font-content">
+          <div class="footer-warning">
+            <strong>警語及免責聲明</strong>
+            <p>
+              本網站僅提供刊登的媒介，不應以此作為投資或購買房屋依據，請務必謹慎評估，本網站不對使用者負任何瑕疵擔保及買賣盈虧責任。本站案件內容若有遗识，概以拍賣執行單位公告為準。
+            </p>
+          </div>
+          <div class="contact-group">
+            <div class="phone">
+              <img src="assets/image/icons/icon-iphone.svg" alt="phone" />
+              <a href="tel:0911151441" class="phone-button">
+                0911-151441
+              </a>
+            </div>
+            <div class="socials">
+              <a href="#"><img src="assets/image/icons/icon-line1.svg" alt="line" /></a>
+              <a href="#"><img src="assets/image/icons/icon-facebook.svg" alt="facebook" /></a>
+              <a href="#"><img src="assets/image/icons/icon-youtub.svg" alt="youtube" /></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          「透明房訊雜誌社 / 一零四法拍網股份有限公司 / 行情通實價網雜誌社 / 一零四高欣仲介經紀有限公司 / 愛上法拍屋資訊股份有限公司 / 一零四安鑫仲介經紀有限公司」共同創設之版權所有。
+          <a href="#">免責聲明</a><a href="#">隱私權政策</a> 版權 © 1986-2024 買屋網-便宜中古屋
+        </div>
+      </div>
+      <p class="border1 hidden-xs-only"></p>
+    </footer>
+  </div>
+  <script src="./assets/js/jquery.min.js"></script>
   <script src="./assets/js/header.js"></script>
+  <script src="./assets/js/swiper.min.js"></script>
+  <script src="./assets/js/viewer.min.js"></script>
+  <script src="./assets/js/bootstarp.min.js"></script>
   <script>
-    fetch('/public/footer.html')
-      .then(res => res.text())
-      .then(html => document.getElementById('footer').innerHTML = html);
+    $(document).ready(function () {
+      /**
+       * 初始化主Swiper和缩略图Swiper
+       * 1. 主Swiper显示大图
+       * 2. 缩略图Swiper显示小图
+       * 3. 两者联动
+       */
+      const housePicture = [
+        './assets/image/list/pic.svg',
+        './assets/image/list/pic1.svg',
+        './assets/image/list/pic2.svg',
+        './assets/image/list/pic3.svg',
+        './assets/image/list/pic4.svg',
+        './assets/image/list/pic.svg',
+        './assets/image/list/pic1.svg',
+        './assets/image/list/pic2.svg',
+        './assets/image/list/pic3.svg',
+        './assets/image/list/pic4.svg',
+      ]
+      const thumbsSwiper = new Swiper('.thumbs-swiper', {
+        spaceBetween: 8,
+        slidesPerView: 5,
+        watchSlidesProgress: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+      // 填充主Swiper和缩略图
+      housePicture.forEach(img => {
+        $('#mainSwiperWrapper').append(`
+                    <div class="swiper-slide">
+                        <img src="${img}" alt="房屋圖片">
+                    </div>
+                `);
+
+        $('#thumbsSwiperWrapper').append(`
+                    <div class="swiper-slide">
+                        <img src="${img}" alt="房屋縮略圖">
+                    </div>
+                `);
+        $('#imagePreview').append(`
+          <img src="${img}" alt="房屋縮略圖">
+        `)
+        $('#pic-count').text(`圖片${housePicture.length}`)
+      });
+      const mainSwiper = new Swiper('.main-swiper', {
+        thumbs: {
+          swiper: thumbsSwiper,
+        },
+      });
+      const gallery = document.getElementById('pic-info');
+      const viewer = new Viewer(gallery, {
+        toolbar: true,
+        title: false,
+      });
+      document.getElementById('pic-count-info').addEventListener('click', () => {
+        viewer.view(0);
+      });
+      /***
+       * 收藏功能
+       * 1. 点击收藏按钮切换状态
+       * 2. 更新收藏图标和计数  
+      */
+      let isFavoriteAdded = false;
+      $('#favoriteBtn').click(function (e) {
+        e.preventDefault();
+        isFavoriteAdded = !isFavoriteAdded;
+
+        if (isFavoriteAdded) {
+          $(this).addClass('favorite-added');
+          $('#favoriteIcon').attr('src', './assets/image/icons/icon-favorite-added.svg');
+          const currentCount = parseInt($('#collectCount').text());
+          $('#collectCount').text(currentCount + 1);
+        } else {
+          $(this).removeClass('favorite-added');
+          $('#favoriteIcon').attr('src', './assets/image/icons/icon-favorite.svg');
+          const currentCount = parseInt($('#collectCount').text());
+          $('#collectCount').text(currentCount - 1);
+        }
+      });
+      // 当页面滚动到house-content这个位置的时候，tabs才显示
+      $(window).scroll(function () {
+        const houseContentOffset = $('#house-content').offset().top;
+        const scrollPosition = $(window).scrollTop();
+        const tabs = $('#tabs');
+        if (scrollPosition >= houseContentOffset) {
+          tabs.addClass('fixed');
+        } else {
+          tabs.removeClass('fixed');
+        }
+      });
+
+      $('#tabs .tab-menu li').click(function () {
+        $('#tabs .tab-menu li').removeClass('active');
+        $(this).addClass('active');
+      });
+
+
+      /***
+       * 地图位置功能
+       * 1. 点击右侧菜单显示对应位置
+       * 2. 点击返回按钮隐藏信息
+       */
+      //点击右侧menu
+      $('#location-menu').on('click', 'li', function () {
+        const selectedName = $(this).find('.name').text();
+        $('#location-info .subtitle').text(selectedName + '周邊');
+        $('#location-info').show();
+        $('#location-menu').hide();
+      });
+      // info 点击返回
+      $('#location-info .location-header p').click(function () {
+        $('#location-info').hide();
+        $('#location-menu').show();
+      });
+
+      /***
+       * 提问功能
+       * 1. 更新字符计数
+       * 2. 快速填充问题
+       * 3. 换一换功能
+       * 4. 提交表单
+       */
+      // 更新字符计数
+      $('#question').on('input', function () {
+        const charCount = $(this).val().length;
+        if (charCount > 50) {
+          $(this).val($(this).val().slice(0, 50));
+        }
+        $('.char-count').text(`${Math.min(charCount, 50)}/50`);
+      });
+      // 换一换功能
+      $('.change-btn').click(function () {
+        const shuffledQuestions = [
+          '這個小區如何？',
+          '交通與上學方便嗎？',
+          '房子屋況如何？',
+          '附近商圈如何？',
+          '最近房價上漲還是下跌？',
+          '法拍原因是什麼？',
+          '附近有沒有學校？',
+          '生活機能如何？',
+          '房屋是否有增建？',
+          '附近有沒有公園？',
+          '房屋是否有貸款限制？',
+          '周邊治安如何？',
+          '房屋是否有漏水問題？',
+          '附近有沒有醫院？',
+          '房屋是否有違建問題？'
+        ].sort(() => Math.random() - 0.5).slice(0, 9);
+        $('.questions-list').empty();
+        shuffledQuestions.forEach(question => {
+          $('.questions-list').append(`<button class="question-btn">${question}</button>`);
+        });
+      });
+      // 点击快速填充问题按钮
+      $('.questions-list').on('click', '.question-btn', function () {
+        const questionText = $(this).text();
+        const currentText = $('#question').val();
+        $('#question').val(currentText + questionText).trigger('input');
+      });
+      // 提交表单
+      $('#questionForm').submit(function (e) {
+        e.preventDefault();
+        const gender = $('input[name="gender"]:checked').next('label').text();
+        const name = $('#name').val() + gender;
+        const phone = $('#phone').val();
+        const question = $('#question').val();
+        alert(`感谢您的提问，${name}！\n您的手机号码是：${phone}\n您的问题是：${question}`);
+      });
+
+      /**
+       * 實價登錄資訊
+      */
+      const priceInfoList = [
+        {
+          id: 1,
+          title: '實價登錄',
+          houseType: '同棟成交大樓',
+          houseTypePrice: '12.22',
+          totalPrice: '105,400',
+          infor: '114年2月至114年3月，成交5筆'
+        },
+        {
+          id: 2,
+          title: '周遭實價',
+          houseType: '38~44年公寓',
+          houseTypePrice: '12.22',
+          totalPrice: '230,620',
+          infor: '周遭100公尺內，112年05月起交易，共13筆'
+        },
+        {
+          id: 3,
+          title: '周遭實價租金',
+          houseType: '36~46年公寓',
+          houseTypePrice: '12.22',
+          totalPrice: '8千,4.3',
+          infor: '周遭100公尺內，105年04月起交易，共22筆'
+        }
+      ]
+      priceInfoList.forEach(info => {
+        const [minPrice, maxPrice] = info.totalPrice.split(',');
+        $('#priceInfoList').append(`
+                    <li>
+                        <p class="subtitle">${info.title}</p>
+                        <div class="list">
+                            <div class='inline'>
+                              <div>
+                                <p>${info.houseType}</p>
+                                <p><i>${info.houseTypePrice}</i>萬/坪</p>
+                              </div>
+                              <div>
+                                  <p>總價</p>
+                                  <p><i>${minPrice}</i>至<i>${maxPrice}</i>萬</p>
+                              </div>  
+                            </div>
+                            <div class="hr"></div>
+                            <div class="desc">${info.infor}</div>
+                        </div>
+                    </li>
+                `);
+      });
+      const transactionData = [
+        {
+          date: "114年02月12日",
+          info: "1房1廳1衛 | 電梯公寓 | 12年 | 5/15樓",
+          area: "25坪",
+          unitPrice: "20",
+          totalPrice: "450",
+        },
+        {
+          date: "113年12月12日",
+          info: "2房1廳1衛 | 電梯公寓 | 12年 | 6/15樓",
+          area: "25",
+          areaPark: '9.2',
+          unitPrice: "19.2",
+          totalPrice: "750",
+        },
+        {
+          date: "113年10月01日",
+          info: "1房1廳1衛 | 電梯公寓 | 12年 | 5/15樓",
+          area: "25",
+          unitPrice: "20",
+          totalPrice: "450",
+        },
+        {
+          date: "113年09月01日",
+          info: "1房1廳1衛 | 電梯公寓 | 12年 | 5/15樓",
+          area: "25",
+          unitPrice: "20",
+          totalPrice: "450",
+        },
+        {
+          date: "113年08月01日",
+          info: "1房1廳1衛 | 電梯公寓 | 12年 | 5/15樓",
+          area: "25",
+          unitPrice: "20",
+          totalPrice: "450",
+        }]
+      transactionData.forEach((data) => {
+        $("#transactionData").append(`
+          <tr>
+            <td><span>${data.date}</span></td>
+            <td>${data.info}</td>
+            <td>
+              <span>${data.area}坪</span>
+              ${data.areaPark ? `<p class="park">含車位 ${data.areaPark}坪</p> ` : ''}
+            </td>
+            <td class="highlight"><i>${data.unitPrice}</i>萬/坪</td>
+            <td class="highlight">
+              <span><i>${data.totalPrice}</i>萬</span>
+              ${data.areaPark ? `<p class="park">含車位</p> ` : ''}
+            </td>
+          </tr>
+        `);
+      });
+      /** 
+       * 附近物件  
+       * */
+      const propertyData = [
+        {
+          image: "./assets/image/list/pic1.svg",
+          title: "房價緊縮:法拍好貸！武廟商圈正3房美寓 代標千萬經紀人 陳慧瑜",
+          details: {
+            area: "156坪",
+            type: "公寓",
+            floor: "12F/12F",
+            age: "34年"
+          },
+          price: {
+            total: "8000",
+            unit: "13.5"
+          },
+          auctionDate: "114/05/05(二)",
+          status: ["一拍", "持分"],
+        },
+        {
+          image: "./assets/image/list/pic2.svg",
+          title: "北園別墅山腳路 大華國小活動中心 實務經驗最專業 林邵涵",
+          details: {
+            area: "156坪",
+            type: "公寓",
+            floor: "12F/12F",
+            age: "34年"
+          },
+          price: {
+            total: "8000",
+            unit: "13.5"
+          },
+          auctionDate: "114/05/05(二)",
+          status: ["一拍", "持分", "類似凶宅"],
+        },
+        {
+          image: "./assets/image/list/pic3.svg",
+          title: "金龍風暴:法拍好貸好案 港大地坪3層車庫透天 代標經紀人 陳慧瑜",
+          details: {
+            area: "156坪",
+            type: "公寓",
+            floor: "12F/12F",
+            age: "34年"
+          },
+          price: {
+            total: "8000",
+            unit: "13.5"
+          },
+          auctionDate: "114/05/05(二)",
+          status: ["一拍"],
+        },
+        {
+          image: "./assets/image/list/pic4.svg",
+          title: "高雄市中心精選法拍案 代標千萬經紀人 陳慧瑜",
+          details: {
+            area: "156坪",
+            type: "公寓",
+            floor: "12F/12F",
+            age: "34年"
+          },
+          price: {
+            total: "8000",
+            unit: "13.5"
+          },
+          auctionDate: "114/06/01(一)",
+          status: ["一拍", "持分"],
+        },
+        {
+          image: "./assets/image/list/pic.svg",
+          title: "鳳山區精選法拍案 代標千萬經紀人 陳慧瑜",
+          details: {
+            area: "156坪",
+            type: "公寓",
+            floor: "12F/12F",
+            age: "34年"
+          },
+          price: {
+            total: "8000",
+            unit: "13.5"
+          },
+          auctionDate: "114/06/01(一)",
+          status: ["一拍"],
+        },
+      ];
+      // 填充附近物件数据
+      propertyData.forEach((property) => {
+        const statusHTML = property.status
+          .map((status, index) => `<i class="c${index}">${status}</i>`)
+          .join("");
+
+        $("#propertyList").append(`
+          <div class="swiper-slide">
+            <div class="image">
+              <img src="${property.image}" alt="${property.title}">
+              <p class="title">${property.title}</p>
+            </div>
+            <div class="content">
+              <div class="details">坪數 ${property.details.area} | ${property.details.type} | ${property.details.floor} | 屋齡 ${property.details.age}</div>
+              <div>
+                <p class="price">總價 <i>${property.price.total}</i><i>萬</i></p>
+                <p class="price">單價 ${property.price.unit}萬/坪</p>
+              </div>
+            </div>
+            <div class="auction-date">
+              <p><span>開標日</span> <b>${property.auctionDate}</b></p>
+              <p class="status"><span>狀態</span> ${statusHTML}</p>
+            </div>
+          </div>
+        `);
+      });
+      const swiper = new Swiper(".swiper-container", {
+        slidesPerView: 3,
+        spaceBetween: 40,
+        navigation: {
+          nextEl: ".custom-next", // 下一页按钮
+          prevEl: ".custom-prev", // 上一页按钮
+        },
+      });
+
+    });
   </script>
   <script>
     window.onunload = () => {
