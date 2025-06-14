@@ -3,8 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mobile Header</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/image/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>您好，歡迎來到買屋網</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -62,10 +63,15 @@
     }
 
     .menu-item p {
-      font-size: 14px;
       margin: 0 !important;
-      color: #333;
       font-size: 0.24rem;
+      color: #333 !important;
+    }
+
+    .menu-item a {
+      color: #333 !important;
+      font-size: 0.24rem;
+      text-decoration: none;
     }
   </style>
   <script src="../assets/js/jquery.min.js"></script>
@@ -76,61 +82,12 @@
     <!-- 顶部导航栏 -->
     <div class="header-bar">
       <img src="../assets/image/icons/icon-back.svg" class="back-button" alt="" srcset="">
-      <h1 class="title">找好房</h1>
+      <h1 class="title"></h1>
       <img src="../assets/image/icons/icon-menu.svg" class="back-button">
     </div>
 
     <!-- 菜单项 -->
-    <div class="menu">
-      <div class="menu-item">
-        <img src="../assets/image/icon-newexp.png" alt="新曝光">
-        <p>新曝光</p>
-      </div>
-      <div class="menu-item">
-        <img src="../assets/image/icon-search-case.png" alt="找好房">
-        <p>找好房</p>
-      </div>
-      <div class="menu-item">
-        <img src="../assets/image/icon-map-case.png" alt="地图找房">
-        <p>地圖找房</p>
-      </div>
-      <div class="menu-item">
-        <img src="../assets/image/icon-sales.png" alt="菁英群">
-        <p>菁英群</p>
-      </div>
-      <div class="menu-item">
-        <img src="../assets/image/icon-business.png" alt="房產大小事">
-        <p>房產大小事</p>
-      </div>
-      <div class="menu-item">
-        <img src="../assets/image/icon-class.png" alt="法拍課程">
-        <p>法拍課程</p>
-      </div>
-      <div class="menu-item">
-        <img src="../assets/image/icon-case-list.png" alt="物件列表">
-        <p>物件列表</p>
-      </div>
-      <div class="menu-item">
-        <img src="../assets/image/icon-news.png" alt="最新消息">
-        <p>最新消息</p>
-      </div>
-      <div class="menu-item">
-        <img src="../assets/image/icon-business-type.png" alt="業務型象">
-        <p>業務型象</p>
-      </div>
-      <div class="menu-item">
-        <img src="../assets/image/icon-about.png" alt="關於我們">
-        <p>關於我們</p>
-      </div>
-      <div class="menu-item">
-        <img src="../assets/image/icon-contact.png" alt="聯絡我們">
-        <p>聯絡我們</p>
-      </div>
-      <div class="menu-item">
-        <img src="../assets/image/icon-qa.png" alt="常見問題">
-        <p>常見問題</p>
-      </div>
-    </div>
+    <div class="menu"></div>
   </div>
   <script>
     $(document).ready(function () {
@@ -138,6 +95,37 @@
       $('.back-button').click(function () {
         window.history.back()
       });
+
+      const menuData = [
+        { icon: "../assets/image/icon-newexp.png", label: "新曝光", href: "../home.html?code=首页" },
+        { icon: "../assets/image/icon-search-case.png", label: "找好房", href: "../list.html?code=找好房" },
+        { icon: "../assets/image/icon-map-case.png", label: "地圖找房", href: "../map.html?code=地图找房" },
+        { icon: "../assets/image/icon-sales.png", label: "菁英群" },
+        { icon: "../assets/image/icon-business.png", label: "房產大小事" },
+        { icon: "../assets/image/icon-class.png", label: "法拍課程" },
+        { icon: "../assets/image/icon-case-list.png", label: "物件列表" },
+        { icon: "../assets/image/icon-news.png", label: "最新消息" },
+        { icon: "../assets/image/icon-business-type.png", label: "業務型象" },
+        { icon: "../assets/image/icon-about.png", label: "關於我們" },
+        { icon: "../assets/image/icon-contact.png", label: "聯絡我們" },
+        { icon: "../assets/image/icon-qa.png", label: "常見問題" },
+      ];
+
+      $.each(menuData, function (i, item) {
+        let html = `
+          <div class="menu-item">
+            <a href="${item.href}">
+              <img src="${item.icon}" alt="${item.label}">
+              <p>${item.label}</p>
+            </a>
+          </div>
+        `;
+        $(".menu").append(html);
+      });
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const code = urlParams.get('code');
+      $('.title').text(code)
     });
   </script>
 </body>

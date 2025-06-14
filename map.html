@@ -1,0 +1,62 @@
+<!--
+ * @Date: 2025-06-14 20:29:13
+ * @LastEditors: “jiamin” “jiamin@gritworld.com”
+ * @LastEditTime: 2025-06-14 20:53:16
+ * @FilePath: /mywoo/map.html
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./assets/image/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>您好，歡迎來到買屋網</title>
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./assets/css/index.css">
+  <link rel="stylesheet" href="./assets/css/header.css">
+  <script src="./assets/js/resize.js"></script>
+
+</head>
+
+<body>
+  <div class="el-containers">
+    <div class="header .el-header">
+      <div class="containers hidden-xs-only">
+        <div class="left">
+          <div class="logo">
+            <img src="../assets/image/logo-mywoo-color.png" alt="MYWOO買屋網" class="logo">
+          </div>
+          <ul class="nav-menu" id="nav-menu">
+          </ul>
+        </div>
+        <div class="right">
+          <a href="/">法拍專業課程</a>
+          <a href="/">房產大小事</a>
+        </div>
+      </div>
+    </div>
+    <div class="header-bar show-xs-only">
+      <img src="./assets/image/icons/icon-back.svg" onclick="window.location.href='./list.html'" alt="" srcset="">
+      <h1 class="title">地图找房</h1>
+      <img src=" ./assets/image/icons/icon-menu2.svg"
+        onclick="window.location.href='./public/mobile-header.html?code=地图找房'">
+    </div>
+
+    <main class="el-main">
+      template
+    </main>
+  </div>
+
+  <script src="./assets/js/header.js"></script>
+  <script src="./assets/js/bootstarp.min.js"></script>
+  <script>
+    window.onunload = () => {
+      if (window.ResponsiveFontSizeHandler && window.ResponsiveFontSizeHandler.stop) {
+        window.ResponsiveFontSizeHandler.stop();
+      }
+    };
+  </script>
+</body>
+
+</html>

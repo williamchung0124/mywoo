@@ -1,19 +1,15 @@
-<!--
- * @Date: 2025-06-02 20:37:35
- * @LastEditors: “jiamin” “jiamin@gritworld.com”
- * @LastEditTime: 2025-06-04 21:45:37
- * @FilePath: /未命名文件夹/sss/mywoo/template.html
--->
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="./assets/image/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>您好，歡迎來到買屋網</title>
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="./assets/css/index.css">
   <link rel="stylesheet" href="./assets/css/header.css">
+  <link rel="stylesheet" href="./assets/css/footer.css">
   <script src="./assets/js/resize.js"></script>
 
 </head>
@@ -45,15 +41,56 @@
       template
     </main>
 
-    <div id="footer"></div>
+    <footer class="footer-wrapper">
+      <div class="footer-inner containers">
+        <div class="footer-top">
+          <div class="logo-section">
+            <img src="assets/image/icon-logo.png" alt="MYWOO買屋網" class="logo" />
+          </div>
+          <ul class="nav-section">
+            <li><a href="#">關於買屋網</a></li>
+            <li><a href="#">物件列表</a></li>
+            <li><a href="#">房產大小事</a></li>
+            <li><a href="#">最新消息</a></li>
+            <li><a href="#">常見問題</a></li>
+            <li><a href="#">業務型象</a></li>
+            <li><a href="#">跟隨我們</a></li>
+          </ul>
+        </div>
+
+        <div class="font-content">
+          <div class="footer-warning">
+            <strong>警語及免責聲明</strong>
+            <p>
+              本網站僅提供刊登的媒介，不應以此作為投資或購買房屋依據，請務必謹慎評估，本網站不對使用者負任何瑕疵擔保及買賣盈虧責任。本站案件內容若有遗识，概以拍賣執行單位公告為準。
+            </p>
+          </div>
+          <div class="contact-group">
+            <div class="phone">
+              <img src="assets/image/icons/icon-iphone.svg" alt="phone" />
+              <a href="tel:0911151441" class="phone-button">
+                0911-151441
+              </a>
+            </div>
+            <div class="socials">
+              <a href="#"><img src="assets/image/icons/icon-line1.svg" alt="line" /></a>
+              <a href="#"><img src="assets/image/icons/icon-facebook.svg" alt="facebook" /></a>
+              <a href="#"><img src="assets/image/icons/icon-youtub.svg" alt="youtube" /></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          「透明房訊雜誌社 / 一零四法拍網股份有限公司 / 行情通實價網雜誌社 / 一零四高欣仲介經紀有限公司 / 愛上法拍屋資訊股份有限公司 / 一零四安鑫仲介經紀有限公司」共同創設之版權所有。
+          <a href="#">免責聲明</a><a href="#">隱私權政策</a> 版權 © 1986-2024 買屋網-便宜中古屋
+        </div>
+      </div>
+      <p class="border1 hidden-xs-only"></p>
+    </footer>
   </div>
 
   <script src="./assets/js/header.js"></script>
-  <script>
-    fetch('/public/footer.html')
-      .then(res => res.text())
-      .then(html => document.getElementById('footer').innerHTML = html);
-  </script>
+  <script src="./assets/js/bootstarp.min.js"></script>
   <script>
     window.onunload = () => {
       if (window.ResponsiveFontSizeHandler && window.ResponsiveFontSizeHandler.stop) {
