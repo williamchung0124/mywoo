@@ -43,12 +43,12 @@ li {
   list-style: none;
 }
 
-.container {
+.containers {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.el-container {
+.el-containers {
   min-width: 1200px !important;
 }
 
@@ -70,10 +70,14 @@ input,select,textarea,button {
   outline: none;
   background: transparent;
 }
+p,ul,.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+  margin-bottom: 0;
+}
+.btn{
+  --bs-btn-padding-x:unset !important
+}
 @media (max-width: 767px) {
- 
-
-  .el-container {
+  .el-containers {
     min-width: unset !important;
   }
 
@@ -82,7 +86,7 @@ input,select,textarea,button {
     line-height: 0.8rem !important;
   }
 
-  .container {
+  .containers {
     max-width: unset;
     margin: unset;
   }

@@ -6,20 +6,20 @@
   <link rel="icon" type="image/svg+xml" href="./assets/image/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>您好，歡迎來到買屋網</title>
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="./assets/css/index.css">
   <link rel="stylesheet" href="./assets/css/header.css">
   <link rel="stylesheet" href="./assets/css/footer.css">
   <link rel="stylesheet" href="./assets/css/list-content.css">
   <link rel="stylesheet" href="./assets/css/swiper.min.css">
   <link rel="stylesheet" href="./assets/css/viewer.min.css">
-  <!-- <link rel="stylesheet" href="./assets/css/bootstrap.min.css"> -->
   <script src="./assets/js/resize.js"></script>
 </head>
 
 <body>
-  <div class="el-container">
+  <div class="el-containers">
     <div class="header .el-header">
-      <div class="container hidden-xs-only">
+      <div class="containers hidden-xs-only">
         <div class="left">
           <div class="logo">
             <img src="./assets/image/logo-mywoo-color.png" alt="MYWOO買屋網" class="logo">
@@ -42,9 +42,10 @@
     <main class="el-main">
       <div class="list-content">
         <div class="banner">
-          <div class='container'>
+          <div class='containers'>
             <div class="breadcrumb hidden-xs-only">
-              首頁 > 高雄市 > 苓雅區 > 建國北路 > 住宅 > 整層住家 > <i id="houseId">R18192419</i>
+              <span>首頁</span> > <span>高雄市</span> > <span>苓雅區</span> > <span>建國北路</span> > <span>住宅</span> >
+              <span>整層住家</span> > <i id="houseId">R18192419</i>
             </div>
             <div class="houseContent">
               <div class="left hidden-xs-only">
@@ -186,7 +187,7 @@
         </div>
         <!-- 锚点 -->
         <div class="tabs" id="tabs">
-          <div class="bg container">
+          <div class="bg containers">
             <div class="hr">
               <ul class="tab-menu">
                 <li class="active"><a href="#housePicture">房屋圖片</a></li>
@@ -210,7 +211,7 @@
           </div>
         </div>
         <div class="box" id="house-content">
-          <div class="bg container">
+          <div class="bg containers">
             <!-- 房屋图片 -->
             <div class="housePicture" id="housePicture">
               <div class="masonry-item">
@@ -336,7 +337,7 @@
           </div>
         </div>
         <div class="box module">
-          <div class="bg container">
+          <div class="bg containers">
             <div class="message" id="priceInfo">
               <p class="title">實價登錄資訊</p>
               <ul id="priceInfoList">
@@ -362,7 +363,7 @@
             <div class="nearbyObjects" id="nearbyObjects">
               <div class="title">附近物件</div>
               <div class="property-swiper  hidden-xs-swiper-only">
-                <div class="swiper-container">
+                <div class="swiper-containers">
                   <div class="swiper-wrapper" id="propertyList">
                     <!-- 数据将通过 jQuery 动态填充 -->
                   </div>
@@ -437,7 +438,7 @@
     </main>
 
     <footer class="footer-wrapper">
-      <div class="footer-inner container">
+      <div class="footer-inner containers">
         <div class="footer-top">
           <div class="logo-section">
             <img src="assets/image/icon-logo.png" alt="MYWOO買屋網" class="logo" />
@@ -877,7 +878,7 @@
           </div>
         `);
       });
-      const swiper = new Swiper(".swiper-container", {
+      const swiper = new Swiper(".swiper-containers", {
         slidesPerView: 3,
         spaceBetween: 40,
         navigation: {

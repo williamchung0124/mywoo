@@ -106,6 +106,9 @@
   line-height: 24px;
   color: #333 !important;
 }
+.list .right .diamondCard .tel a:hover{
+  text-decoration: none;
+}
 .list .right .diamondCard:hover {
   box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.1);
 }
@@ -217,6 +220,7 @@
   border-radius: 2px;
   line-height: 22px;
   height: 22px;
+  font-size: 14px;
   padding: 0;
   color: #333;
 }
@@ -329,36 +333,36 @@
   background-color: #0566B3;
 }
 
-.filter-container {
+.filter-containers {
   padding-top: 24px;
   padding-bottom: 32px;
   display: flex;
   align-items: center;
 }
 
-.filter-container .logo {
+.filter-containers .logo {
   font-weight: bold;
   font-size: 24px;
 }
 
-.filter-container .logo img {
+.filter-containers .logo img {
   width: 24px;
   height: 24px;
 }
 
-.filter-container .input-search {
+.filter-containers .input-search {
   display: flex;
   align-items: center;
   margin-left: 88px;
   margin-right: 24px;
 }
 
-.filter-container .input-search select {
+.filter-containers .input-search select {
   border: none;
   background: transparent;
 }
 
-.filter-container .input-search input {
+.filter-containers .input-search input {
   height: 40px;
   width: 634px;
   margin-left: 12px;
@@ -370,7 +374,7 @@
   border-bottom-right-radius: 0px;
 }
 
-.filter-container .search-button {
+.filter-containers .search-button {
   border: none;
   width: 74px;
   line-height: 36px;
@@ -384,27 +388,27 @@
   border-bottom-right-radius: 3px;
 }
 
-.filter-container .search-button svg {
+.filter-containers .search-button svg {
   width: 18px;
   height: 18px;
   vertical-align: sub;
   margin-right: 4px;
 }
 
-.filter-container .map {
+.filter-containers .map {
   cursor: pointer;
 }
 
-.filter-container .svg-icon {
+.filter-containers .svg-icon {
   display: inline-block;
   vertical-align: middle;
 }
 
-.filter-container .map img {
+.filter-containers .map img {
   vertical-align: middle;
 }
 
-.filter-container .map span {
+.filter-containers .map span {
   font-size: 16px;
   font-weight: bold;
   color: #333;
@@ -564,6 +568,13 @@
   object-fit: cover;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
+  transition:transform 0.3s ease
+}
+.card div{
+  overflow: hidden;
+}
+.card img:hover{
+  transform: scale(1.15);
 }
 .card .card-box {
   padding: 16px;
@@ -615,21 +626,21 @@
   display: flex;
   align-items: start;
 }
-.pagination .page-item {
+.pagination .item {
   border: 1px solid #ddd;
   border-right: 0;
   overflow: hidden;
 }
-.pagination .page-item:first-child {
+.pagination .item:first-child {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
 }
-.pagination .page-item:last-child {
+.pagination .item:last-child {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
   border-right: 1px solid #ddd;
 }
-.pagination .page-link {
+.pagination .link {
   display: block;
   padding: 0px 12px;
   height: 38px;
@@ -638,18 +649,18 @@
   color: #007bff;
   font-size: 14px;
 }
-.pagination .page-link:hover {
+.pagination .link:hover {
   background-color: #f1f1f1;
 }
-.pagination .page-item.active{
+.pagination .item.active{
   border-color: #007bff;
 }
-.pagination .page-item.active .page-link {
+.pagination .item.active .link {
   background-color: #007bff;
   color: #fff;
   font-weight: bold;
 }
-.pagination .page-item span.page-link {
+.pagination .item span.link {
   background-color: transparent;
   border: none;
   color: #6c757d;
@@ -657,7 +668,7 @@
 }
 
 @media only screen and (max-width: 767px) {
-  .list .container {
+  .list .containers {
     width: 100%;
     padding: 0 0.2rem;
   }
@@ -763,7 +774,7 @@
     position: absolute;
     z-index: 888;
     left: 0.1rem;
-    top: -0.4rem;
+    top: -0.45rem;
   }
   .mobile .search .el-icon svg {
     width: 0.24rem;
@@ -791,6 +802,7 @@
     width: 93%;
     height: 0.6rem;
     border: 0;
+    font-size: 0.25rem;
     border-radius: 3px;
     padding-left: 0.45rem;
     background-color: #e9e9e9 !important;

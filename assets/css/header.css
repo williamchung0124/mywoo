@@ -2,7 +2,7 @@
   background: #F5F6F7;
 }
 
-.header .container {
+.header .containers {
   display: flex;
   justify-content: space-between;
   line-height: 36px;
@@ -26,10 +26,9 @@
   cursor: pointer;
 }
 
-.header .nav-menu li.active  {
-  color: #0566B3;
+.header .nav-menu li:hover,.header .nav-menu li.active{
+  color: #ea5513
 }
-
 .header .logo {
   width: 61px;
   height: 20px;
