@@ -36,7 +36,7 @@
     </div>
     <div class="header-bar show-xs-only">
       <img src="./assets/image/icons/icon-back.svg" onclick="window.location.href='./list.html'" alt="" srcset="">
-      <h1 class="title">地图找房</h1>
+      <h1 class="title">找好房</h1>
       <img src=" ./assets/image/icons/icon-menu2.svg"
         onclick="window.location.href='./public/mobile-header.html?code=地图找房'">
     </div>
@@ -48,8 +48,8 @@
             <div class="input-search">
               <select id="city" class="el-select">
               </select>
-              <input type="text" id="search" class="el-input" placeholder="請輸入物件關鍵字...">
-              <button class="search-button">
+              <input type="text" id="search" class="el-input hidden-xs-only" placeholder="請輸入物件關鍵字...">
+              <button class="search-button hidden-xs-only">
                 <i class="el-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
                     <path fill="currentColor"
@@ -59,13 +59,13 @@
                 搜尋
               </button>
             </div>
-            <div class="map">
+            <div class="map hidden-xs-only">
               <img src="./assets/image/icons/house-list.svg" alt="" srcset="">
               <span><a href="./list.html">列表找房</a></span>
             </div>
           </div>
           <div class="filter-item">
-            <select id="town" class="form-select">
+            <select id="town" class="form-select hidden-xs-only">
               <option value="">按鄉鎮</option>
             </select>
             <select id="type" class="form-select">
@@ -77,13 +77,13 @@
             <select id="area" class="form-select">
               <option value="">坪數</option>
             </select>
-            <select id="age" class="form-select">
+            <select id="age" class="form-select hidden-xs-only">
               <option value="">屋齡</option>
             </select>
             <select id="more" class="form-select">
               <option value="">更多</option>
             </select>
-            <span class="clear" id="clear">
+            <span class="clear hidden-xs-only" id="clear">
               <img src="./assets/image/icons/icon-delete.svg">
               清空條件
             </span>
@@ -94,16 +94,24 @@
             <div class="map-container" id="map"></div>
           </div>
           <div class="sidebar col-md-4">
-            <div class="sort">
+            <div class="sort hidden-xs-only">
               排序：
               <div class="inputSelectDate">
                 <input type="text" id="update-date" placeholder="更新時間" autocomplete="off" />
                 <img src="./assets/image/icons/icon-arrowL.svg" alt="" srcset="">
               </div>
             </div>
+            <div class="mobileListHeader show-xs-only">
+              <img src="./assets/image/icons/icon-cancel.svg" id="closeList" alt="" srcset="">
+              <span id="areaName"></span>
+              <img src="./assets/image/icons/icon-sort.svg" id="sortList" alt="" srcset="">
+            </div>
             <ul class="house-list list-unstyled" id="houseList">
             </ul>
-            <ul class="pagination" id="pagination"></ul>
+            <ul class="pagination hidden-xs-only" id="pagination"></ul>
+            <div class="loadmore show-xs-only">
+              查看更多好房
+            </div>
           </div>
         </div>
       </div>
@@ -215,7 +223,7 @@
     function fetchTypes() {
       return new Promise(resolve => {
         setTimeout(() => {
-          resolve(['公寓', '别墅', '透天', '店面']);
+          resolve(['類型', '公寓', '别墅', '透天', '店面']);
         }, 200);
       });
     }
@@ -290,7 +298,6 @@
       let ageOptions = await fetchAgeOptions();
 
       $('#type').empty();
-      $('#type').append('<option value="">類型</option>');
       types.forEach(t => $('#type').append(`<option value="${t}">${t}</option>`));
 
       $('#price').empty();
@@ -328,6 +335,7 @@
         renderList(1, 5, getFilter());
       });
       $('#town,#type,#price,#area,#age,#sort').change(function () {
+        console.log('Town select changed, selected value:', $('#town').val());
         renderList(1, 5, getFilter());
       });
       $('#search').on('input', function () {
@@ -399,6 +407,8 @@
           const marker = L.marker(areaCoords[t], { icon }).addTo(mapInstance);
           marker.on('click', function () {
             $('#town').val(t).trigger('change');
+            $('#areaName').text(t)
+            $('.sidebar.col-md-4').show()
           });
         }
         // polygon
@@ -434,44 +444,60 @@
     }
 
     function renderList(page = 1, pageSize = 5, filter = {}) {
+      console.log('Rendering list with filter:', filter);
       let towns = allTowns[filter.city] || [];
       let list = allHouses.filter(h => {
+        // 城市过滤
         if (filter.city && !towns.includes(h.town)) return false;
-        if (filter.town) { if (h.town !== filter.town) return false; }
-        if (filter.type) { if (h.type !== filter.type) return false; }
-        if (filter.price && filter.price !== '总价不限') {
+
+        // 乡镇过滤
+        if (filter.town && filter.town !== '按鄉鎮' && h.town !== filter.town) return false;
+
+        // 类型过滤
+        if (filter.type && filter.type !== '類型' && h.type !== filter.type) return false;
+
+        // 总价过滤
+        if (filter.price && filter.price !== '總價') {
           if (filter.price === '500萬以下' && h.price >= 500) return false;
           if (filter.price === '500-1000萬' && (h.price < 500 || h.price > 1000)) return false;
           if (filter.price === '1000萬以上' && h.price <= 1000) return false;
         }
-        if (filter.area && filter.area !== '坪数不限') {
+
+        // 坪数过滤
+        if (filter.area && filter.area !== '坪數') {
           if (filter.area === '20坪以下' && h.area > 20) return false;
           if (filter.area === '20-40坪' && (h.area < 20 || h.area > 40)) return false;
           if (filter.area === '40坪以上' && h.area < 40) return false;
         }
-        if (filter.age && filter.age !== '屋龄不限') {
+
+        // 屋龄过滤
+        if (filter.age && filter.age !== '屋齡') {
           if (filter.age === '5年以下' && h.age >= 5) return false;
           if (filter.age === '5-15年' && (h.age < 5 || h.age > 15)) return false;
           if (filter.age === '15年以上' && h.age < 15) return false;
         }
+
+        // 搜索关键词过滤
         if (filter.search && !h.title.includes(filter.search)) return false;
+
+        // 更新日期过滤
         if (filter.updateDate) {
-          // h.update 是时间戳，转为 yyyy-mm-dd
           const dateStr = new Date(h.update * 1000).toISOString().slice(0, 10);
           if (dateStr !== filter.updateDate) return false;
         }
+
+        // 更多选项过滤
+        if (filter.more && filter.more !== '更多') {
+          if (filter.more === '有车位' && (!h.desc || !h.desc.includes('有车位'))) return false;
+          if (filter.more === '无车位' && (!h.desc || !h.desc.includes('无车位'))) return false;
+          // 注意：这里需要确保h.desc存在且包含完整的楼层信息，例如 "6F/12F"
+          if (/\d+F\/\d+F/.test(filter.more) && (!h.desc || !h.desc.includes(filter.more))) return false;
+        }
+
         return true;
       });
 
       renderMoreOptions(list);
-      if (filter.more && filter.more !== '更多') {
-        list = list.filter(h => {
-          if (filter.more === '有车位' && (!h.desc || !h.desc.includes('有车位'))) return false;
-          if (filter.more === '无车位' && (!h.desc || !h.desc.includes('无车位'))) return false;
-          if (/\d+F\/\d+F/.test(filter.more) && (!h.desc || !h.desc.includes(filter.more))) return false;
-          return true;
-        });
-      }
       if (filter.sort === 'price') list.sort((a, b) => a.price - b.price);
       else if (filter.sort === 'area') list.sort((a, b) => a.area - b.area);
       else list.sort((a, b) => b.update - a.update);
@@ -481,44 +507,21 @@
       let showList = list.slice(start, end);
 
       $('#houseList').empty();
+      $('#mobileHouseList').empty()
       showList.forEach(h => {
-        $('#houseList').append(`
-      <li class="house-item d-flex mb-3">
-        <div class="image">
-          <img src="${h.img}" class="mr-3">
-          ${h.tag ? `<span class="badge badge-tag ${getTagClass(h.tag)}">${h.tag}</span>` : ''}
-        </div>
-        <div style="flex:1;">
-          <div class="d-flex align-items-center">
-            <div class="house-title">
-              <a href="./list-content.html">${h.title}</a>
-            </div>
-            <button class="btn btn-link p-0"><i class="fa fa-heart-o"></i></button>
-          </div>
-          <div class="text-muted ">${h.desc || ''}</div>
-          <div class="address">
-            <img src="assets/image/icons/icon-location-color.svg" alt=""> ${h.address || ''}
-          </div>
-          <div class="info">
-            <span class="badge badge-date">${h.openDate || '開標日 : 114/05/05(二)'}</span>
-            ${h.auctionStatus ? `<span class="badge badge-status">${h.auctionStatus}</span>` : ''}
-          </div>
-          <div class="d-flex align-items-center mt-2">
-            <img class="avatar" src="${h.agentAvatar || 'https://randomuser.me/api/portraits/women/44.jpg'}">
-            <span class="name">代標顧問 ${h.agent || '吳美慧'}</span>
-          </div>
-          <div class="d-flex align-items-end mt-2">
-            <span>總價 <i>${h.price}</i> <i>萬</i></span>
-            <span>單價${h.unitPrice || '11.5'}萬/坪</span>
-          </div>
-        </div>
-      </li>
-    `);
+        const html = createHouseListItemHtml(h);
+        $('#houseList').append(html);
+      });
+
+      // 收藏功能
+      $('.favorite-icon').click(function () {
+        const isAdded = $(this).attr('src').includes('icon-favorite-added.svg');
+        $(this).attr('src', isAdded ? 'assets/image/icons/icon-favorite.svg' : 'assets/image/icons/icon-favorite-added.svg');
+        console.log($(this).attr('id'))
       });
 
       // 分页
       let pageCount = Math.ceil(total / pageSize);
-      console.log(pageCount)
       $('#pagination').empty();
 
       function createPageItem(label, pageNum, active = false, disabled = false) {
@@ -582,6 +585,42 @@
       };
     }
 
+    function createHouseListItemHtml(h) {
+      return `
+      <li class="house-item d-flex mb-3">
+        <div class="image">
+          <img src="${h.img}" class="mr-3">
+          ${h.tag ? `<span class="badge badge-tag ${getTagClass(h.tag)}">${h.tag}</span>` : ''}
+        </div>
+        <div style="flex:1;">
+          <div class="d-flex align-items-center">
+            <div class="house-title">
+              <a href="./list-content.html">${h.title}</a>
+              <img class="favorite-icon hidden-xs-only" id='${h.id}' src="assets/image/icons/icon-favorite.svg" alt="">
+            </div>
+            <button class="btn btn-link p-0"><i class="fa fa-heart-o"></i></button>
+          </div>
+          <div class="text-muted ">${h.desc || ''}</div>
+          <div class="address">
+            <img src="assets/image/icons/icon-location-color.svg" alt=""> ${h.address || ''}
+          </div>
+          <div class="info">
+            <span class="badge badge-date">開標日: ${h.openDate || '114/05/05(二)'}</span>
+            ${h.auctionStatus ? `<span class="badge badge-status">${h.auctionStatus}</span>` : ''}
+          </div>
+          <div class="d-flex align-items-center mt-2 hidden-xs-only">
+            <img class="avatar" src="${h.agentAvatar || 'https://randomuser.me/api/portraits/women/44.jpg'}">
+            <span class="name">代標顧問 ${h.agent || '吳美慧'}</span>
+          </div>
+          <div class="d-flex align-items-end mt-2">
+            <span>總價 <i>${h.price}</i> <i>萬</i></span>
+            <span><i class="hidden-xs-only">單價</i>${h.unitPrice || '11.5'}萬/坪</span>
+          </div>
+        </div>
+      </li>
+    `;
+    }
+
     function getTagClass(tag) {
       switch (tag) {
         case '推薦': return 'badge-tag-recommend';
@@ -591,6 +630,20 @@
         default: return '';
       }
     }
+
+
+    // 关闭手机端的list浮层
+    $('#closeList').click(function () {
+      $('.sidebar.col-md-4').hide()
+    })
+    // 手机端列表排序
+    $('#sortList').click(function () {
+      alert('排序')
+    })
+    // 加载更多
+    $('.loadmore').click(function () {
+      alert('加载数据')
+    })
   </script>
   <script>
     window.onunload = () => {

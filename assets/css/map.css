@@ -12,6 +12,7 @@
   overflow-y: scroll;
   background: #fff;
 }
+
 .map .sidebar .sort{
   border-bottom: 1px solid #E1E1E1;
   line-height: 42px;
@@ -96,6 +97,7 @@
   justify-content: center;
   border-top: 1px solid #e1e1e1;
   padding: 15px 0;
+  display: flex;
 }
 
 .map .map-area-label {
@@ -167,7 +169,13 @@
   border-radius: 4px;
   padding: 2px 8px;
 }
-
+.map .house-title{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: flex-start;
+  cursor: pointer;
+}
 .map .house-title a{
   overflow: hidden;
   text-overflow: ellipsis;
@@ -176,11 +184,14 @@
   line-height: 24px;
   color: #333; 
 }
-
+.map .house-title img{
+  width: 25px;
+  height: 25px;
+}
 .map .text-muted,.map .address{
   font-size: 12px;
   line-height: 18px;
-  color: #666;
+  color: #666 !important;
   margin-top: 8px;
 }
 .map .address img{
@@ -328,7 +339,7 @@ gap: 12px;
 align-items: center;
 }
 .filter-item select.form-select{
-  width: 115px;
+  width: 92px;
   height: 40px;
   line-height: 40px;
   outline: none !important;
@@ -339,6 +350,12 @@ align-items: center;
   padding:0 10px;
   cursor: pointer;
   box-shadow: unset !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.form-select{
+  background-position: right 6px center;
 }
 .filter-item .clear{
   cursor: pointer;
@@ -351,5 +368,124 @@ align-items: center;
   vertical-align: text-top;
 }
 @media only screen and (max-width: 767px) {
-  
+  .map .search{
+    display: flex;
+    align-items: baseline;
+    margin: 0.24rem 0;
+    margin-left: 0.2rem;
+  }
+  .map .filter-header{
+    padding: 0;
+  }
+  .map .filter-header .input-search{
+    margin: 0 !important;
+  }
+  .filter-item select.form-select,
+  .filter-header .input-search select{
+    width: 0.9rem;
+    height: unset;
+    border: none;
+    color: #333;
+    padding: 0;
+    line-height: unset;
+    font-size: 0.24rem;
+    margin-right: 0.1rem;
+    
+  }
+  .filter-header .input-search select{
+    width: 1.1rem !important;
+    margin-right: 0.2rem;
+  }
+  .filter-item select.form-select option,
+  .filter-header .input-search select option{
+    font-size: 0.3rem;
+  }
+  .form-select{
+    background-position: right 0rem center;
+    background-size: 0.16rem 0.16rem;
+  }
+  .map .case{
+    margin-top: 0 !important;
+    height: calc(100vh - 1.65rem);
+  }
+  .map .sidebar .house-list{
+    height: calc(49vh - 0.1rem);
+  }
+  .map .sidebar.col-md-4{
+    position: absolute;
+    top: 30vh;
+    z-index: 2222;
+    width: 100%;
+    left: 0;
+    display: none;
+    background-color: #fff;
+  }
+  .map-container{
+    width: 100vw;
+  }
+  .header-bar{
+    margin-bottom: 0;
+  }
+  .mobileListHeader{
+    background-color: #fff;
+    padding: 0.24rem 0.2rem;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #E1E1E1;
+  }
+  .mobileListHeader img{
+    width: 0.4rem;
+    height: 0.4rem;
+  }
+  .mobileListHeader span{
+    font-size: 0.32rem;
+    color: #333
+  }
+  .map .house-item{
+    margin-right: 0;
+    border-right: 0;
+    padding: 0.3rem 0.2rem 0.2rem 0.2rem;
+  }
+  .map .house-item .image img,.map .house-item .image{
+    width: 2.72rem;
+    height: 2.04rem;
+    margin-right: 0.14rem;
+  }
+  .map .house-title a{
+    font-size: 0.28rem;
+    line-height: 0.36rem;
+  }
+  .map .text-muted,.map .address{
+   line-height: 0.36rem;
+   font-size: 0.24rem;
+   margin-top: 0.12rem;
+  }
+  .house-item .info{
+    display: flex;
+  }
+  .map .info .badge-date,.map .info .badge-status{
+    font-size: 0.24rem;
+    padding: 0 0.1rem;
+    line-height: 0.35rem;
+    margin-top: 0.12rem;
+  }
+  .d-flex.align-items-end.mt-2 span:first-child,
+  .d-flex.align-items-end.mt-2 span:last-child,
+  .d-flex.align-items-end.mt-2 span:first-child i:last-child{
+    font-size: 0.22rem;
+  }
+  .d-flex.align-items-end.mt-2 span:first-child i:first-child{
+    font-size: 0.34rem;
+    font-size: 0.34rem;
+    margin-top: -2px;
+    display: inline-block;
+  }
+  .case .loadmore {
+    border-top:1px solid #e1e1e1 !important;
+    font-size: 0.24rem;
+    color: #0566B3;
+    text-align: center;
+    padding: 0.24rem 0;
+  }
 }
