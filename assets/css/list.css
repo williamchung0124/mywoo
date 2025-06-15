@@ -372,6 +372,7 @@
   border-right: 0;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
+  color: #333;
 }
 
 .filter-containers .search-button {
@@ -405,13 +406,16 @@
 }
 
 .filter-containers .map img {
-  vertical-align: middle;
+  vertical-align: text-top;
 }
 
-.filter-containers .map span {
+.filter-containers .map span a {
   font-size: 16px;
   font-weight: bold;
   color: #333;
+}
+.filter-containers .map span a:hover{
+  text-decoration: none;
 }
 .listItem {
   cursor: pointer;
@@ -787,6 +791,10 @@
   .mobile .search span {
     font-size: 0.16rem;
     color: #333;
+  }
+  .mobile .search span a{
+    color: #333;
+    font-size: 0.18rem;
   }
   .mobile .box {
     margin: 0.2rem 0 0.1rem;

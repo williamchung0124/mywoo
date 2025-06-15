@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./assets/image/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>您好，歡迎來到買屋網</title>
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="./assets/css/index.css">
+  <link rel="stylesheet" href="./assets/css/header.css">
+  <link rel="stylesheet" href="./assets/css/map.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css">
+  <script src="./assets/js/resize.js"></script>
+  <script src="./assets/js/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="el-containers">
+    <div class="header .el-header">
+      <div class="containers hidden-xs-only">
+        <div class="left">
+          <div class="logo">
+            <img src="../assets/image/logo-mywoo-color.png" alt="MYWOO買屋網" class="logo">
+          </div>
+          <ul class="nav-menu" id="nav-menu">
+          </ul>
+        </div>
+        <div class="right">
+          <a href="/">法拍專業課程</a>
+          <a href="/">房產大小事</a>
+        </div>
+      </div>
+    </div>
+    <div class="header-bar show-xs-only">
+      <img src="./assets/image/icons/icon-back.svg" onclick="window.location.href='./list.html'" alt="" srcset="">
+      <h1 class="title">地图找房</h1>
+      <img src=" ./assets/image/icons/icon-menu2.svg"
+        onclick="window.location.href='./public/mobile-header.html?code=地图找房'">
+    </div>
+
+    <main class="el-main">
+      <div class="map">
+        <div class="containers search">
+          <div class="filter-header">
+            <div class="input-search">
+              <select id="city" class="el-select">
+              </select>
+              <input type="text" id="search" class="el-input" placeholder="請輸入物件關鍵字...">
+              <button class="search-button">
+                <i class="el-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+                    <path fill="currentColor"
+                      d="m795.904 750.72 124.992 124.928a32 32 0 0 1-45.248 45.248L750.656 795.904a416 416 0 1 1 45.248-45.248zM480 832a352 352 0 1 0 0-704 352 352 0 0 0 0 704">
+                    </path>
+                  </svg></i>
+                搜尋
+              </button>
+            </div>
+            <div class="map">
+              <img src="./assets/image/icons/house-list.svg" alt="" srcset="">
+              <span><a href="./list.html">列表找房</a></span>
+            </div>
+          </div>
+          <div class="filter-item">
+            <select id="town" class="form-select">
+              <option value="">按鄉鎮</option>
+            </select>
+            <select id="type" class="form-select">
+              <option value="">類型</option>
+            </select>
+            <select id="price" class="form-select">
+              <option value="">總價</option>
+            </select>
+            <select id="area" class="form-select">
+              <option value="">坪數</option>
+            </select>
+            <select id="age" class="form-select">
+              <option value="">屋齡</option>
+            </select>
+            <select id="more" class="form-select">
+              <option value="">更多</option>
+            </select>
+            <span class="clear" id="clear">
+              <img src="./assets/image/icons/icon-delete.svg">
+              清空條件
+            </span>
+          </div>
+        </div>
+        <div class="case">
+          <div class="col-md-8">
+            <div class="map-container" id="map"></div>
+          </div>
+          <div class="sidebar col-md-4">
+            <div class="sort">
+              排序：
+              <div class="inputSelectDate">
+                <input type="text" id="update-date" placeholder="更新時間" autocomplete="off" />
+                <img src="./assets/image/icons/icon-arrowL.svg" alt="" srcset="">
+              </div>
+            </div>
+            <ul class="house-list list-unstyled" id="houseList">
+            </ul>
+            <ul class="pagination" id="pagination"></ul>
+          </div>
+        </div>
+      </div>
+  </div>
+  </main>
+  </div>
+
+  <script src="./assets/js/header.js"></script>
+  <script src="./assets/js/bootstarp.min.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/locales/bootstrap-datepicker.zh-TW.min.js"></script>
+  <script>
+    // 模拟异步接口
+    function fetchCities() {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(['高雄市', '台北市', '台中市']);
+        }, 200);
+      });
+    }
+    function fetchTowns(city) {
+      const townsData = {
+        '高雄市': ['三民区', '左营区', '苓雅区', '鼓山区', '凤山区'],
+        '台北市': ['大安区', '信义区', '中山区'],
+        '台中市': ['西屯区', '北区', '南区']
+      };
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(townsData[city] || []);
+        }, 200);
+      });
+    }
+    function fetchAreas() {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve({
+            '三民区': 4817, '左营区': 3648, '苓雅区': 2306, '鼓山区': 832, '凤山区': 3999,
+            '大安区': 1200, '信义区': 900, '中山区': 800,
+            '西屯区': 1500, '北区': 1100, '南区': 900
+          });
+        }, 200);
+      });
+    }
+    function fetchHouses() {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          let houses = [];
+          let areaKeys = ['三民区', '左营区', '苓雅区', '鼓山区', '凤山区', '大安区', '信义区', '中山区', '西屯区', '北区', '南区'];
+          let tags = ['推薦', '精選', '無須競標', '最後一拍'];
+          let auctionStatusArr = ['一拍', '二拍', '持分', '疑似凶宅', ''];
+          let descArr = [
+            '坪数 122坪 | 透天 | 1F/4F | 屋龄 19年 | 有车位',
+            '坪数 36坪 | 公寓 | 6F/12F | 屋龄 42年',
+            '坪数 56坪 | 公寓 | 6F/12F | 屋龄 12年 | 有车位',
+            '坪数 48坪 | 别墅 | 2F/2F | 屋龄 8年',
+            '坪数 80坪 | 公寓 | 8F/15F | 屋龄 5年'
+          ];
+          let addressArr = [
+            '高雄市苓雅区武廟路5弄15号4楼',
+            '美浓区美兴街',
+            '湖内区正义一路64巷1弄2号3层楼',
+            '台北市大安区信义路',
+            '台中市西屯区文心路'
+          ];
+          let agentArr = ['吴美慧', '陈丽环', '张大明', '李小美'];
+          let avatarArr = [
+            'https://randomuser.me/api/portraits/women/44.jpg',
+            'https://randomuser.me/api/portraits/women/47.jpg',
+            'https://randomuser.me/api/portraits/men/32.jpg',
+            'https://randomuser.me/api/portraits/women/65.jpg'
+          ];
+          let pic = [
+            './assets/image/list/pic1.svg',
+            './assets/image/list/pic2.svg',
+            './assets/image/list/pic3.svg',
+            './assets/image/list/pic4.svg',
+
+          ]
+          for (let i = 1; i <= 50; i++) {
+            houses.push({
+              id: i,
+              title: `房源${i}号` + (i % 3 === 0 ? ' 大湖火车站 大湖夜市 | 法拍安心购' : '') + (i % 2 === 0 ? ' 美浓夜市大地坪4层店住透天自住开店首选' : ''),
+              town: areaKeys[i % areaKeys.length],
+              type: i % 2 === 0 ? '公寓' : '别墅',
+              price: 500 + i * 10,
+              area: 20 + i,
+              age: i % 20,
+              update: 1715000000 - i * 10000,
+              img: pic[i % pic.length],
+              tag: tags[i % tags.length],
+              desc: descArr[i % descArr.length],
+              address: addressArr[i % addressArr.length],
+              openDate: '114/05/05(二)',
+              auctionStatus: auctionStatusArr[i % auctionStatusArr.length],
+              agent: agentArr[i % agentArr.length],
+              agentAvatar: avatarArr[i % avatarArr.length],
+              unitPrice: (10 + (i % 10)).toFixed(1)
+            });
+          }
+          resolve(houses);
+        }, 200);
+      });
+    }
+
+    // 新增动态选项接口
+    function fetchTypes() {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(['公寓', '别墅', '透天', '店面']);
+        }, 200);
+      });
+    }
+    function fetchPriceOptions() {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(['總價', '500萬以下', '500-1000萬', '1000萬以上']);
+        }, 200);
+      });
+    }
+    function fetchAreaOptions() {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(['坪數', '20坪以下', '20-40坪', '40坪以上']);
+        }, 200);
+      });
+    }
+    function fetchAgeOptions() {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(['屋齡', '5年以下', '5-15年', '15年以上']);
+        }, 200);
+      });
+    }
+
+    // 全局数据
+    let allCities = [];
+    let allTowns = {};
+    let allAreas = {};
+    let allHouses = [];
+    let mapInstance = null;
+
+    // 区域GeoJSON样例（真实项目请用真实数据）
+    const areaGeoJSON = {
+      '三民区': {
+        "type": "Feature",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[120.32, 22.65], [120.33, 22.65], [120.33, 22.66], [120.32, 22.66], [120.32, 22.65]]]
+        }
+      },
+      '左营区': {
+        "type": "Feature",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[120.30, 22.68], [120.31, 22.68], [120.31, 22.69], [120.30, 22.69], [120.30, 22.68]]]
+        }
+      }
+      // 可继续补充其他区域
+    };
+
+    // 初始化
+    $(async function () {
+      // 获取城市
+      allCities = await fetchCities();
+      $('#city').empty();
+      allCities.forEach(city => $('#city').append(`<option>${city}</option>`));
+
+      // 获取乡镇
+      for (let city of allCities) {
+        allTowns[city] = await fetchTowns(city);
+      }
+      // 获取区域房源数
+      allAreas = await fetchAreas();
+      // 获取房源
+      allHouses = await fetchHouses();
+
+      // 获取类型、总价、坪数、屋龄选项
+      let types = await fetchTypes();
+      let priceOptions = await fetchPriceOptions();
+      let areaOptions = await fetchAreaOptions();
+      let ageOptions = await fetchAgeOptions();
+
+      $('#type').empty();
+      $('#type').append('<option value="">類型</option>');
+      types.forEach(t => $('#type').append(`<option value="${t}">${t}</option>`));
+
+      $('#price').empty();
+      priceOptions.forEach(p => $('#price').append(`<option value="${p}">${p}</option>`));
+
+      $('#area').empty();
+      areaOptions.forEach(a => $('#area').append(`<option value="${a}">${a}</option>`));
+
+      $('#age').empty();
+      ageOptions.forEach(a => $('#age').append(`<option value="${a}">${a}</option>`));
+
+      // 初始化日期控件
+      $('#update-date').datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        language: 'zh-TW',
+        todayHighlight: true
+      });
+      $('#update-date').on('change', function () {
+        renderList(1, 5, getFilter());
+      });
+
+
+      // 默认城市
+      let defaultCity = allCities[0];
+      renderTowns(defaultCity);
+      renderMap(defaultCity);
+      renderList(1, 5, { city: defaultCity, sort: 'update' });
+
+      // 城市联动
+      $('#city').change(function () {
+        let city = $(this).val();
+        renderTowns(city);
+        renderMap(city);
+        renderList(1, 5, getFilter());
+      });
+      $('#town,#type,#price,#area,#age,#sort').change(function () {
+        renderList(1, 5, getFilter());
+      });
+      $('#search').on('input', function () {
+        renderList(1, 5, getFilter());
+      });
+      $('#clear').click(function () {
+        $('#city').val(allCities[0]).trigger('change');
+        $('#type,#price,#area,#age,#sort').val(function () { return this.options[0].value; });
+        $('#update-date').val('');
+        $('#search').val('');
+        renderList(1, 5, { city: allCities[0], sort: 'update' });
+      });
+      $('#more').change(function () {
+        renderList(1, 5, getFilter());
+      });
+    });
+
+    function renderTowns(city) {
+      $('#town').empty();
+      $('#town').append('<option value="">按鄉鎮</option>');
+      (allTowns[city] || []).forEach(t => $('#town').append(`<option value="${t}">${t}</option>`));
+    }
+    function renderMap(city) {
+      // 区域中心点
+      const cityCenters = {
+        '高雄市': [22.6273, 120.3014],
+        '台北市': [25.0375, 121.5637],
+        '台中市': [24.1477, 120.6736]
+      };
+      // 区域经纬度
+      const areaCoords = {
+        '三民区': [22.6524, 120.3246],
+        '左营区': [22.6871, 120.3060],
+        '苓雅区': [22.6256, 120.3089],
+        '鼓山区': [22.6536, 120.2849],
+        '凤山区': [22.6277, 120.3576],
+        '大安区': [25.0268, 121.5430],
+        '信义区': [25.0330, 121.5654],
+        '中山区': [25.0620, 121.5250],
+        '西屯区': [24.1818, 120.6417],
+        '北区': [24.1537, 120.6844],
+        '南区': [24.1232, 120.6750]
+      };
+
+      // 清空并初始化地图
+      $('#map').empty();
+      if (mapInstance) {
+        mapInstance.remove();
+        mapInstance = null;
+      }
+      mapInstance = L.map('map').setView(cityCenters[city] || [23.5, 121], 12);
+
+      // 加载底图
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(mapInstance);
+
+      // 标注各区域
+      (allTowns[city] || []).forEach(t => {
+        if (areaCoords[t]) {
+          // 自定义浮层
+          const html = `<div class="area-bubble-content">${t}<br>${allAreas[t] || 0}间</div>`;
+          const icon = L.divIcon({
+            className: 'area-bubble',
+            html: html,
+            iconSize: [80, 80],
+            iconAnchor: [40, 40]
+          });
+          const marker = L.marker(areaCoords[t], { icon }).addTo(mapInstance);
+          marker.on('click', function () {
+            $('#town').val(t).trigger('change');
+          });
+        }
+        // polygon
+        if (areaGeoJSON[t]) {
+          L.geoJSON(areaGeoJSON[t], {
+            style: {
+              color: '#156fc1',
+              weight: 2,
+              fillColor: '#156fc1',
+              fillOpacity: 0.15
+            }
+          }).addTo(mapInstance);
+        }
+      });
+    }
+
+    function renderMoreOptions(list) {
+      let parkingSet = new Set();
+      let floorSet = new Set();
+      list.forEach(h => {
+        if (h.desc) {
+          if (h.desc.includes('有车位')) parkingSet.add('有车位');
+          if (h.desc.includes('无车位')) parkingSet.add('无车位');
+          let floorMatch = h.desc.match(/\d+F\/\d+F/);
+          if (floorMatch) floorSet.add(floorMatch[0]);
+        }
+      });
+      let options = ['更多'];
+      if (parkingSet.size) options = options.concat(Array.from(parkingSet));
+      if (floorSet.size) options = options.concat(Array.from(floorSet));
+      $('#more').empty();
+      options.forEach(opt => $('#more').append(`<option value="${opt}">${opt}</option>`));
+    }
+
+    function renderList(page = 1, pageSize = 5, filter = {}) {
+      let towns = allTowns[filter.city] || [];
+      let list = allHouses.filter(h => {
+        if (filter.city && !towns.includes(h.town)) return false;
+        if (filter.town) { if (h.town !== filter.town) return false; }
+        if (filter.type) { if (h.type !== filter.type) return false; }
+        if (filter.price && filter.price !== '总价不限') {
+          if (filter.price === '500萬以下' && h.price >= 500) return false;
+          if (filter.price === '500-1000萬' && (h.price < 500 || h.price > 1000)) return false;
+          if (filter.price === '1000萬以上' && h.price <= 1000) return false;
+        }
+        if (filter.area && filter.area !== '坪数不限') {
+          if (filter.area === '20坪以下' && h.area > 20) return false;
+          if (filter.area === '20-40坪' && (h.area < 20 || h.area > 40)) return false;
+          if (filter.area === '40坪以上' && h.area < 40) return false;
+        }
+        if (filter.age && filter.age !== '屋龄不限') {
+          if (filter.age === '5年以下' && h.age >= 5) return false;
+          if (filter.age === '5-15年' && (h.age < 5 || h.age > 15)) return false;
+          if (filter.age === '15年以上' && h.age < 15) return false;
+        }
+        if (filter.search && !h.title.includes(filter.search)) return false;
+        if (filter.updateDate) {
+          // h.update 是时间戳，转为 yyyy-mm-dd
+          const dateStr = new Date(h.update * 1000).toISOString().slice(0, 10);
+          if (dateStr !== filter.updateDate) return false;
+        }
+        return true;
+      });
+
+      renderMoreOptions(list);
+      if (filter.more && filter.more !== '更多') {
+        list = list.filter(h => {
+          if (filter.more === '有车位' && (!h.desc || !h.desc.includes('有车位'))) return false;
+          if (filter.more === '无车位' && (!h.desc || !h.desc.includes('无车位'))) return false;
+          if (/\d+F\/\d+F/.test(filter.more) && (!h.desc || !h.desc.includes(filter.more))) return false;
+          return true;
+        });
+      }
+      if (filter.sort === 'price') list.sort((a, b) => a.price - b.price);
+      else if (filter.sort === 'area') list.sort((a, b) => a.area - b.area);
+      else list.sort((a, b) => b.update - a.update);
+
+      let total = list.length;
+      let start = (page - 1) * pageSize, end = start + pageSize;
+      let showList = list.slice(start, end);
+
+      $('#houseList').empty();
+      showList.forEach(h => {
+        $('#houseList').append(`
+      <li class="house-item d-flex mb-3">
+        <div class="image">
+          <img src="${h.img}" class="mr-3">
+          ${h.tag ? `<span class="badge badge-tag ${getTagClass(h.tag)}">${h.tag}</span>` : ''}
+        </div>
+        <div style="flex:1;">
+          <div class="d-flex align-items-center">
+            <div class="house-title">
+              <a href="./list-content.html">${h.title}</a>
+            </div>
+            <button class="btn btn-link p-0"><i class="fa fa-heart-o"></i></button>
+          </div>
+          <div class="text-muted ">${h.desc || ''}</div>
+          <div class="address">
+            <img src="assets/image/icons/icon-location-color.svg" alt=""> ${h.address || ''}
+          </div>
+          <div class="info">
+            <span class="badge badge-date">${h.openDate || '開標日 : 114/05/05(二)'}</span>
+            ${h.auctionStatus ? `<span class="badge badge-status">${h.auctionStatus}</span>` : ''}
+          </div>
+          <div class="d-flex align-items-center mt-2">
+            <img class="avatar" src="${h.agentAvatar || 'https://randomuser.me/api/portraits/women/44.jpg'}">
+            <span class="name">代標顧問 ${h.agent || '吳美慧'}</span>
+          </div>
+          <div class="d-flex align-items-end mt-2">
+            <span>總價 <i>${h.price}</i> <i>萬</i></span>
+            <span>單價${h.unitPrice || '11.5'}萬/坪</span>
+          </div>
+        </div>
+      </li>
+    `);
+      });
+
+      // 分页
+      let pageCount = Math.ceil(total / pageSize);
+      console.log(pageCount)
+      $('#pagination').empty();
+
+      function createPageItem(label, pageNum, active = false, disabled = false) {
+        return `<li class="page-item${active ? ' active' : ''}"><a class="page-link" href="#" data-page="${pageNum}">${label}</a></li>`;
+      }
+
+      if (pageCount >= 1) {
+        // 上一页
+        $('#pagination').append(createPageItem('&#60;', page - 1, false, page === 1));
+
+        // 首页
+        $('#pagination').append(createPageItem(1, 1, page === 1, false));
+
+        // 前省略号
+        if (page > 4) {
+          $('#pagination').append('<li class="page-item"><span class="page-link">...</span></li>');
+        }
+
+        // 中间页
+        let start = Math.max(2, page - 2);
+        let end = Math.min(pageCount - 1, page + 2);
+        for (let i = start; i <= end; i++) {
+          $('#pagination').append(createPageItem(i, i, i === page, false));
+        }
+
+        // 后省略号
+        if (page < pageCount - 3) {
+          $('#pagination').append('<li class="page-item"><span class="page-link">...</span></li>');
+        }
+
+        // 末页
+        if (pageCount > 1) {
+          $('#pagination').append(createPageItem(pageCount, pageCount, page === pageCount, false));
+        }
+
+        // 下一页
+        $('#pagination').append(createPageItem('&#62;', page + 1, false, page === pageCount));
+      }
+
+      // 分页点击
+      $('#pagination .page-link').off('click').on('click', function (e) {
+        e.preventDefault();
+        let p = $(this).data('page');
+        if (p && p >= 1 && p <= pageCount && p !== page) {
+          renderList(p, pageSize, filter);
+        }
+      });
+    }
+
+    function getFilter() {
+      return {
+        city: $('#city').val(),
+        town: $('#town').val(),
+        type: $('#type').val(),
+        price: $('#price').val(),
+        area: $('#area').val(),
+        age: $('#age').val(),
+        search: $('#search').val(),
+        updateDate: $('#update-date').val(),
+        more: $('#more').val()
+      };
+    }
+
+    function getTagClass(tag) {
+      switch (tag) {
+        case '推薦': return 'badge-tag-recommend';
+        case '精選': return 'badge-tag-featured';
+        case '無須競標': return 'badge-tag-no-bid';
+        case '最後一拍': return 'badge-tag-last-auction';
+        default: return '';
+      }
+    }
+  </script>
+  <script>
+    window.onunload = () => {
+      if (window.ResponsiveFontSizeHandler && window.ResponsiveFontSizeHandler.stop) {
+        window.ResponsiveFontSizeHandler.stop();
+      }
+    };
+  </script>
+</body>
+
+</html>

@@ -118,3 +118,20 @@ p,ul,.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
     height: 0.4rem;
   }
 }
+
+.badge-tag-recommend {
+  background: rgb(5, 102, 179) !important;
+  color: #fff;
+}
+.badge-tag-featured {
+  background: rgb(234, 85, 19) !important;
+  color: #fff;
+}
+.badge-tag-no-bid {
+  background: rgb(67, 198, 47) !important;
+  color: #fff;
+}
+.badge-tag-last-auction {
+  background: rgb(173, 66, 202) !important;
+  color: #fff;
+}
