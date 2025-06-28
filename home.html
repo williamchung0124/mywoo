@@ -4,11 +4,16 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="./assets/image/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>您好，歡迎來到買屋網</title>
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="./assets/css/index.css">
   <link rel="stylesheet" href="./assets/css/header.css">
+  <link rel="stylesheet" href="./assets/css/footer.css">
+  <link rel="stylesheet" href="./assets/css/home.css">
+  <link rel="stylesheet" href="./assets/css/swiper.min.css">
   <script src="./assets/js/resize.js"></script>
+  <script src="./assets/js/jquery.min.js"></script>
 
 </head>
 
@@ -17,35 +22,649 @@
     <div class="header .el-header">
       <div class="containers hidden-xs-only">
         <div class="left">
-          <div class="logo">
-            <img src="../assets/image/logo-mywoo-color.png" alt="MYWOO買屋網" class="logo">
-          </div>
-          <ul class="nav-menu" id="nav-menu">
-          </ul>
+          <img src="./assets/image/icons/logo.svg" alt="MYWOO買屋網" class="logo">
         </div>
-        <div class="right">
-          <a href="/">法拍專業課程</a>
-          <a href="/">房產大小事</a>
-        </div>
+        <ul class="nav-menu" id="nav-menu">
+        </ul>
+      </div>
+      <div class="header-bar show-xs-only">
+        <img src="./assets/image/icons/icon-back.svg" onclick="window.location.href='./list.html'" alt="" srcset="">
+        <h1 class="title">首页</h1>
+        <img src=" ./assets/image/icons/icon-menu2.svg" onclick="window.location.href='./public/mobile-header.html'">
       </div>
     </div>
 
-    <main class="el-main">home</main>
+    <main class="el-main">
+      <div class="banner">
+        <div class="tab-container">
+          <ul class="tab-menu">
+            <li class="tab-item active" data-tab="new-exposure">新曝光</li>
+            <li class="tab-item" data-tab="one-floor">一樓</li>
+            <li class="tab-item" data-tab="building">大樓</li>
+            <li class="tab-item" data-tab="apartment">公寓</li>
+            <li class="tab-item" data-tab="loft">透天</li>
+            <li class="tab-item" data-tab="store">店面</li>
+            <li class="tab-item" data-tab="land">土地</li>
+            <li class="tab-item" data-tab="map-search">地圖找房</li>
+          </ul>
+          <div class="tab-search">
+            <select id="city" class="el-select">
+              <option value="1">高雄市</option>
+              <option value="2">高雄2</option>
+              <option value="3">高雄3</option>
+            </select>
+            <input type="text" id="search" class="el-input" placeholder="請輸入物件關鍵字...">
+            <button class="search-button">
+              <i class="el-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+                  <path fill="currentColor"
+                    d="m795.904 750.72 124.992 124.928a32 32 0 0 1-45.248 45.248L750.656 795.904a416 416 0 1 1 45.248-45.248zM480 832a352 352 0 1 0 0-704 352 352 0 0 0 0 704">
+                  </path>
+                </svg></i>
+              搜尋
+            </button>
+          </div>
+          <div class="new-info">
+            <span class="tag">NEW</span>
+            <span class="text">代標近王船文化館大地坪4層車庫透天</span>
+            <span><img src="./assets/image/home/right.svg" alt="" srcset=""></span>
+          </div>
+        </div>
+      </div>
+      <div class="containers">
+        <!-- 锚点 -->
+        <div class="anchor-point hidden-xs-only">
+          <ul class="anchor-list">
+            <li>猜你喜歡</li>
+            <li><a href="#exposure" class="active">抢先曝光</a></li>
+            <li><a href="#selected">精選物件</a></li>
+            <li><a href="#ranking">熱門案件</a></li>
+            <li><a href="#elite">專業菁英</a></li>
+            <li><a href="#news">房產大小事</a></li>
+          </ul>
+        </div>
+        <!-- 抢先曝光 -->
+        <div class="content-box" id="exposure">
+          <div class="title"><a>搶先曝光</a></div>
+          <div class="exposure-swiper hidden-xs-swiper-only">
+            <div class="swiper-containers exposure-swiper-container">
+              <div class="swiper-wrapper house-list" id="exposureList">
+                <!-- 数据将通过 jQuery 动态填充 -->
+              </div>
+            </div>
+            <!-- 导航按钮 -->
+            <div class="swiper-button-prev custom-prev"></div>
+            <div class="swiper-button-next custom-next"></div>
+          </div>
+          <div class="load-button">
+            <p>查看更多(12000筆)</p>
+          </div>
+        </div>
+        <!-- 精選物件 -->
+        <div class="content-box" id="selected">
+          <div class="title"><a>精選物件</a></div>
+          <div class="house-list row" id="selectedList">
+            <!-- 动态数据将通过 jQuery填充 -->
+          </div>
+          <div class="load-button">
+            <p>查看更多(12000筆)</p>
+          </div>
+        </div>
+        <!-- 熱門案件排行 -->
+        <div class="content-box" id="ranking">
+          <div class="title"><a>熱門案件排行</a></div>
+          <div class="list row" id="cityList">
+            <!-- 动态数据将通过 jQuery填充 -->
+          </div>
+        </div>
+        <!-- 專業菁英群 -->
+        <div class="content-box" id="elite">
+          <div class="title"><a>專業菁英群</a></div>
+          <div class="elite-swiper hidden-xs-swiper-only">
+            <div class="swiper-containers elite-swiper-container">
+              <div class="swiper-wrapper elite-list" id="eliteList">
+                <!-- 数据将通过 jQuery 动态填充 -->
+              </div>
+            </div>
+            <!-- 导航按钮 -->
+            <div class="swiper-button-prev custom-prev"></div>
+            <div class="swiper-button-next custom-next"></div>
+          </div>
+        </div>
+        <!-- 房產大小事 -->
+        <div class="content-box" id="news">
+          <div class="title"><a>房產大小事</a></div>
+          <div class="list row" id="newsList">
+            <!-- 动态数据将通过 jQuery填充 -->
+          </div>
+        </div>
+      </div>
 
-    <div id="footer"></div>
+      <!-- 法拍專業課程 -->
+      <div class="french-auction-class">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="containers">
+                <div class="box">
+                  <p>法拍專業課程</p>
+                  <p>法拍入門班 <span>9/12日開課</span></p>
+                  <p>適合初入領域及法拍市場的您</p>
+                  <p><a href="#">立 即 報 名</a></p>
+                </div>
+              </div>
+              <img src="./assets/image/home/pic11.svg" alt="法拍入門班">
+            </div>
+            <div class="swiper-slide">
+              <div class="containers">
+                <div class="box">
+                  <p>法拍專業課程</p>
+                  <p>法拍實務班 <span>10/12日開課</span></p>
+                  <p>適合有意投入於不動產市場交易的您，<br />有效掌握不動產交易市場情勢</p>
+                  <p><a href="#">立 即 報 名</a></p>
+                </div>
+              </div>
+              <img src="./assets/image/home/pic22.svg" alt="法拍實務班">
+            </div>
+            <div class="swiper-slide">
+              <div class="containers">
+                <div class="box">
+                  <p>法拍專業課程</p>
+                  <p>法拍高階班 <span>9/12日開課</span></p>
+                  <p>適合已參與過實務班，<br />對法拍實務具一定程度熟悉及敏銳度的您</p>
+                  <p><a href="#">立 即 報 名</a></p>
+                </div>
+              </div>
+              <img src="./assets/image/home/pic33.svg" alt="法拍高階班">
+            </div>
+          </div>
+          <!-- 分页指示器 -->
+          <div class="swiper-pagination"></div>
+          <!-- 导航按钮 -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+
+
+    </main>
+
+    <footer class="footer-wrapper">
+      <div class="footer-inner containers">
+        <div class="footer-top">
+          <div class="logo-section">
+            <img src="assets/image/icon-logo.png" alt="MYWOO買屋網" class="logo" />
+          </div>
+          <ul class="nav-section">
+            <li><a href="#">關於買屋網</a></li>
+            <li><a href="#">物件列表</a></li>
+            <li><a href="#">房產大小事</a></li>
+            <li><a href="#">最新消息</a></li>
+            <li><a href="#">常見問題</a></li>
+            <li><a href="#">業務型象</a></li>
+            <li><a href="#">跟隨我們</a></li>
+          </ul>
+        </div>
+
+        <div class="font-content">
+          <div class="footer-warning">
+            <strong>警語及免責聲明</strong>
+            <p>
+              本網站僅提供刊登的媒介，不應以此作為投資或購買房屋依據，請務必謹慎評估，本網站不對使用者負任何瑕疵擔保及買賣盈虧責任。本站案件內容若有遗识，概以拍賣執行單位公告為準。
+            </p>
+          </div>
+          <div class="contact-group">
+            <div class="phone">
+              <img src="assets/image/icons/icon-iphone.svg" alt="phone" />
+              <a href="tel:0911151441" class="phone-button">
+                0911-151441
+              </a>
+            </div>
+            <div class="socials">
+              <a href="#"><img src="assets/image/icons/icon-line1.svg" alt="line" /></a>
+              <a href="#"><img src="assets/image/icons/icon-facebook.svg" alt="facebook" /></a>
+              <a href="#"><img src="assets/image/icons/icon-youtub.svg" alt="youtube" /></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          「透明房訊雜誌社 / 一零四法拍網股份有限公司 / 行情通實價網雜誌社 / 一零四高欣仲介經紀有限公司 / 愛上法拍屋資訊股份有限公司 / 一零四安鑫仲介經紀有限公司」共同創設之版權所有。
+          <a href="#">免責聲明</a><a href="#">隱私權政策</a> 版權 © 1986-2024 買屋網-便宜中古屋
+        </div>
+      </div>
+      <p class="border1 hidden-xs-only"></p>
+    </footer>
   </div>
 
   <script src="./assets/js/header.js"></script>
+  <script src="./assets/js/bootstarp.min.js"></script>
+  <script src="./assets/js/swiper.min.js"></script>
   <script>
-    fetch('/public/footer.html')
-      .then(res => res.text())
-      .then(html => document.getElementById('footer').innerHTML = html);
-  </script>
-  <script>
+    $(document).ready(function () {
+      //锚点
+      $('.anchor-list li a').on('click', function (e) {
+        e.preventDefault();
+        const target = $(this).attr('href');
+        $('html, body').animate({
+          scrollTop: $(target).offset().top - 30
+        }, 500);
+        $('.anchor-list li a').removeClass('active');
+        $(this).addClass('active');
+      });
+      // 动态计算锚点定位
+      const updateAnchorPosition = () => {
+        $('.anchor-point').stop().animate({
+          left: '-80px'
+        }, 300);
+      };
+      updateAnchorPosition()
+      // 上下滚动的时候也监听, 重新计算锚点位置
+      $(window).on('scroll', function () {
+        const scrollTop = $(this).scrollTop();
+        const windowHeight = $(window).height();
+        const newBottom = $('.french-auction-class').offset().top + $('.french-auction-class').outerHeight();
+        if (scrollTop > 350) {
+          $('.anchor-point').css({
+            position: 'fixed',
+            left: $('.containers').offset().left - 80 + 'px',
+          })
+        } else {
+          $('.anchor-point').css({
+            position: 'absolute',
+            left: '-80px',
+          })
+        }
+        if (scrollTop + windowHeight >= newBottom) {
+          console.log('已滚动到 .new 底部');
+          $('.anchor-point').hide()
+        } else {
+          $('.anchor-point').show()
+        }
+
+        // 滚动到特定位置时，锚点激活class
+        // 滚动到特定位置时，锚点激活class
+        const sections = ['#exposure', '#selected', '#ranking', '#elite', '#news'];
+        sections.forEach((section) => {
+          const sectionOffset = $(section).offset().top - 100;
+          const sectionHeight = $(section).outerHeight();
+          if (scrollTop >= sectionOffset && scrollTop < sectionOffset + sectionHeight) {
+            $('.anchor-list li a').removeClass('active');
+            $(`.anchor-list li a[href="${section}"]`).addClass('active');
+          }
+        });
+
+      });
+
+      // 监听窗口大小变化，重新计算锚点位置
+      $(window).on('resize', updateAnchorPosition);
+
+
+      // banner
+      $(".tab-item").on("click", function () {
+        $(".tab-item").removeClass("active");
+        $(this).addClass("active");
+      });
+      $('.search-button').on('click', function () {
+        const city = $('#city').val();
+        const cityText = $('#city option:selected').text();
+        const tabItem = $('.tab-item.active').text();
+        const search = $('#search').val();
+        if (!search) {
+          alert('請輸入物件關鍵字');
+          return
+        }
+        alert(`您選擇的类型是: ${tabItem}，城市是: ${city}${cityText}，搜尋關鍵字是: ${search}`);
+      });
+      // 抢先曝光
+      const exposureData = [
+        {
+          image: "./assets/image/list/pic1.svg",
+          area: "苓雅區 | 公寓 | 33.3坪",
+          price: Math.floor(Math.random() * 9000) + 1000,
+          info: "房貸緊縮!法拍好貸! 武廟商圈正3房",
+          date: '114/3/12(三)',
+          tag: "精选",
+          count: "1拍",
+        },
+        {
+          image: "./assets/image/list/pic2.svg",
+          area: "三民區 | 公寓 | 28.5坪",
+          tag: "精选",
+          price: Math.floor(Math.random() * 9000) + 1000,
+          info: "近捷運站，生活機能便利",
+          date: '114/3/12(三)',
+          count: "2拍",
+        },
+        {
+          image: "./assets/image/list/pic3.svg",
+          area: "左營區 | 電梯大樓 | 45.2坪",
+          price: Math.floor(Math.random() * 9000) + 1000,
+          info: "高樓層景觀佳，附車位",
+          date: '114/3/12(三)',
+          count: "1拍",
+        },
+        {
+          image: "./assets/image/list/pic.svg",
+          area: "前鎮區 | 公寓 | 30.1坪",
+          price: Math.floor(Math.random() * 9000) + 1000,
+          info: "近商圈，生活便利",
+          date: '114/3/12(三)',
+          count: "3拍",
+        },
+        {
+          image: "./assets/image/list/pic2.svg",
+          area: "鳳山區 | 電梯大樓 | 50.3坪",
+          price: Math.floor(Math.random() * 9000) + 1000,
+          info: "新裝潢，拎包入住",
+          date: '114/3/12(三)',
+          count: "1拍",
+        }
+      ]
+      exposureData.forEach((item) => {
+        $("#exposureList").append(`
+          <div class="swiper-slide">
+            <div class="card-wrapper">
+              <div class="image">
+                ${item.tag ? `<p class="tag">${item.tag}</p>` : ''}
+                <img src="${item.image}" alt="${item.info}">
+                <p class="info">${item.info}</p>
+              </div>
+              <div class="content">
+                <p>
+                  <span class="area">${item.area}</span>
+                  <span class="price">總價<i>${item.price}</i>萬</span>
+                </p>
+                <p class="date">${item.date} | ${item.count}</p>
+              </div>
+            </div>
+          </div>
+        `);
+      });
+      // 初始化Swiper
+      const exposure_swiper = new Swiper('.exposure-swiper-container', {
+        slidesPerView: 4, // 每行显示4个
+        spaceBetween: 23,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+
+      // 精選物件
+      const selectedData = [
+        {
+          image: "./assets/image/list/pic1.svg",
+          area: "苓雅區 | 公寓 | 33.3坪",
+          price: Math.floor(Math.random() * 9000) + 1000,
+          info: "房貸緊縮!法拍好貸! 武廟商圈正3房",
+          date: '114/3/12(三)',
+          count: "1拍",
+          tag: "精选",
+        },
+        {
+          image: "./assets/image/list/pic2.svg",
+          area: "三民區 | 公寓 | 28.5坪",
+          price: Math.floor(Math.random() * 9000) + 1000,
+          info: "近捷運站，生活機能便利",
+          date: '114/3/12(三)',
+          count: "2拍",
+          tag: "精选",
+        },
+        {
+          image: "./assets/image/list/pic3.svg",
+          area: "左營區 | 電梯大樓 | 45.2坪",
+          price: Math.floor(Math.random() * 9000) + 1000,
+          info: "高樓層景觀佳，附車位",
+          date: '114/3/12(三)',
+          count: "1拍",
+          tag: "精选",
+        },
+        {
+          image: "./assets/image/list/pic1.svg",
+          area: "前鎮區 | 公寓 | 30.1坪",
+          price: Math.floor(Math.random() * 9000) + 1000,
+          info: "近商圈，生活便利",
+          date: '114/3/12(三)',
+          count: "3拍",
+          tag: "精选",
+        },
+        {
+          image: "./assets/image/list/pic2.svg",
+          area: "鳳山區 | 電梯大樓 | 50.3坪",
+          price: Math.floor(Math.random() * 9000) + 1000,
+          info: "新裝潢，拎包入住",
+          date: '114/3/12(三)',
+          count: "1拍",
+          tag: "精选",
+        },
+        {
+          image: "./assets/image/list/pic3.svg",
+          area: "鼓山區 | 公寓 | 35.7坪",
+          price: Math.floor(Math.random() * 9000) + 1000,
+          info: "近學區，適合家庭居住",
+          date: '114/3/12(三)',
+          count: "2拍",
+          tag: "精选",
+        },
+        {
+          image: "./assets/image/list/pic1.svg",
+          area: "楠梓區 | 電梯大樓 | 40.2坪",
+          price: Math.floor(Math.random() * 9000) + 1000,
+          info: "交通便利，近公園",
+          date: '114/3/12(三)',
+          count: "1拍",
+          tag: "精选",
+        },
+        {
+          image: "./assets/image/list/pic2.svg",
+          area: "大寮區 | 公寓 | 25.8坪",
+          price: Math.floor(Math.random() * 9000) + 1000,
+          info: "低總價，投資首選",
+          date: '114/3/12(三)',
+          count: "3拍",
+          tag: "精选",
+        }
+      ];
+      selectedData.forEach((item) => {
+        $("#selectedList").append(`
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 col-12">
+            <div class="card-wrapper">
+              <div class="image">
+                ${item.tag ? `<p class="tag">${item.tag}</p>` : ''}
+                <img src="${item.image}" alt="${item.info}">
+                <p class="info">${item.info}</p>
+              </div>
+              <div class="content">
+                <p>
+                  <span class="area">${item.area}</span>
+                  <span class="price">總價<i>${item.price}</i>萬</span>
+                </p>
+                <p class="date">${item.date} | ${item.count}</p>
+              </div>
+            </div>
+          </div>
+        `);
+      });
+
+      // 热门案件排行
+      const cityData = [
+        {
+          image: "./assets/image/home/city1.svg",
+          logo: './assets/image/home/taibei.svg',
+          info: "台北",
+        },
+        {
+          image: "./assets/image/home/city2.svg",
+          logo: './assets/image/home/taizhong.svg',
+          info: "台中",
+        },
+        {
+          image: "./assets/image/home/city3.svg",
+          logo: './assets/image/home/tainan.svg',
+          info: "台南",
+        },
+        {
+          image: "./assets/image/home/city4.svg",
+          logo: './assets/image/home/gaoxiong.svg',
+          info: "高雄",
+        }
+      ];
+      cityData.forEach((city) => {
+        $("#cityList").append(`
+          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
+            <div class="card-wrapper">
+              <div class="image">
+                <p class="logo">
+                  <img src="${city.logo}" alt="${city.info}">
+                </p>
+                <img src="${city.image}" alt="${city.info}">
+              </div>
+              <div class="content">
+                ${city.info}
+              </div>
+            </div>
+          </div>
+        `);
+      });
+
+      // 专业菁英群
+      const eliteData = [
+        {
+          image: "./assets/image/home/elite1.svg",
+          name: "林邵涵",
+          count: Math.floor(Math.random() * 900) + 100,
+          info: "實務經驗最紮實",
+          tag: "金牌",
+          bgcolor: "#D0AB17",
+        },
+        {
+          image: "./assets/image/home/elite3.svg",
+          name: "蔡文怡",
+          tag: "人氣",
+          bgcolor: "#EA5513",
+          count: Math.floor(Math.random() * 900) + 100,
+          info: "專業/謹慎/低調",
+        },
+        {
+          image: "./assets/image/home/elite2.svg",
+          name: "陳慧瑜",
+          count: Math.floor(Math.random() * 900) + 100,
+          info: "您的疑慮就是我的專業",
+        },
+        {
+          image: "./assets/image/home/elite3.svg",
+          name: "蔡文怡",
+          tag: "人氣",
+          bgcolor: "#EA5513",
+          count: Math.floor(Math.random() * 900) + 100,
+          info: "專業/謹慎/低調",
+        },
+        {
+          image: "./assets/image/home/elite1.svg",
+          name: "林邵涵",
+          count: Math.floor(Math.random() * 900) + 100,
+          info: "實務經驗最紮實",
+          tag: "金牌",
+          bgcolor: "#D0AB17",
+        },
+        {
+          image: "./assets/image/home/elite2.svg",
+          name: "陳慧瑜",
+          count: Math.floor(Math.random() * 900) + 100,
+          info: "您的疑慮就是我的專業",
+        }
+      ]
+      eliteData.forEach((item) => {
+        $("#eliteList").append(`
+          <div class="swiper-slide">
+            <div class="card-wrapper">
+              <div class="image">
+                ${item.tag ? `<p class="tag" style="background-color: ${item.bgcolor};">${item.tag}</p>` : ''}
+                <img src="${item.image}" alt="${item.name}">
+              </div>
+              <div class="content">
+                <p>
+                  <span class="name">${item.name}</span>
+                  <span class="count">代標待售<i>${item.count}</i>件</span>
+                </p>
+                <p class="info">${item.info}</p>
+              </div>
+            </div>
+          </div>
+        `);
+      });
+      // 初始化Swiper
+      const elite_swiper = new Swiper('.elite-swiper-container', {
+        slidesPerView: 3, // 每行显示4个
+        spaceBetween: 24,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+
+      // 房产大小事
+      const newsData = [
+        {
+          image: "./assets/image/home/new1.svg",
+          info: "簡單買法拍屋，法拍代標是什麼?",
+          tag: "法拍安心購",
+        },
+        {
+          image: "./assets/image/home/new2.svg",
+          info: "屋龄40年仍然抢手！小心1原因让买卖、都更吃闷亏",
+          tag: "買屋須知",
+        },
+        {
+          image: "./assets/image/home/new3.svg",
+          info: "購屋需求一次看懂！5分鐘看法拍屋、預售屋、新成屋、中古屋各優缺點",
+          tag: "專業名詞白話文",
+        },
+        {
+          image: "./assets/image/home/new4.svg",
+          info: "88戶平價屋自己進場標購，省更多！",
+          tag: "焦點新聞",
+        },
+        {
+          image: "./assets/image/home/new5.svg",
+          info: "房市5年首現死亡交叉！2024第一季是反轉關鍵，7大因素決定市場強弱",
+          tag: "專題影音",
+        },
+      ];
+      newsData.forEach((news) => {
+        $("#newsList").append(`
+          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 col-6">
+            <div class="card-wrapper">
+              <div class="image">
+                <p class="tag">${news.tag}</p>
+                <img src="${news.image}" alt="${news.info}">
+              </div>
+              <div class="content">
+              ${news.info}
+              </div>
+            </div>
+          </div>
+        `);
+      });
+      // 法拍专业课程
+      const swiper = new Swiper('.swiper-container', {
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true, // 分页指示器可点击
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    });
     window.onunload = () => {
       if (window.ResponsiveFontSizeHandler && window.ResponsiveFontSizeHandler.stop) {
         window.ResponsiveFontSizeHandler.stop();
       }
+      $(window).off('resize');
+      $(window).off('scroll');
     };
   </script>
 </body>

@@ -1,11 +1,14 @@
 .header {
-  background: #F5F6F7;
+  background: #0566B3; 
 }
 
 .header .containers {
   display: flex;
   justify-content: space-between;
-  line-height: 36px;
+  align-items: center;
+  background: #0566B3;
+  line-height: 60px;
+  height: 60px;
 }
 
 .header .left {
@@ -14,32 +17,30 @@
 
 .header .nav-menu {
   display: flex;
-  gap: 20px;
+  gap: 50px;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .header .nav-menu li {
-  color: #333333;
-  font-size: 14px;
+  color: #ACDAFF;
+  font-size: 16px;
   cursor: pointer;
 }
 
 .header .nav-menu li:hover,.header .nav-menu li.active{
-  color: #ea5513
+  color: #fff
 }
-.header .logo {
-  width: 61px;
-  height: 20px;
-  margin-right: 45px;
-  vertical-align: sub;
+.header .left img {
+  width: 125px;
+  height: 38px;
 }
 
 .header .right a {
-  color: #333333;
-  font-size: 14px;
-  margin-right: 20px;
+  color: #ACDAFF;
+  font-size: 16px;
+  cursor: pointer;
   text-decoration: none;
 }
 

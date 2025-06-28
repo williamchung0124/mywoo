@@ -1,3 +1,9 @@
+/*
+ * @Date: 2025-06-04 22:19:40
+ * @LastEditors: “jiamin” “jiamin@gritworld.com”
+ * @LastEditTime: 2025-06-28 15:48:08
+ * @FilePath: /mywoo/assets/js/header.js
+ */
 function createNavMenu(menuItems, menuContainerId) {
   const navMenu = document.getElementById(menuContainerId);
 
@@ -37,14 +43,13 @@ function setActiveMenuItem(menuItems, menuContainerId) {
 }
 
 const menuItems = [
-  { id: 0, name: "新曝光", link: "home.html" },
-  { id: 1, name: "找好房", link: "list.html" },
-  { id: 2, name: "菁英群", link: "elite.html" },
-  { id: 3, name: "法拍專業課程", link: "course.html" },
-  { id: 4, name: "房產大小事", link: "news.html" },
-  { id: 5, name: "最新消息", link: "latest.html" },
-  { id: 6, name: "業務型象", link: "business.html" },
-  { id: 7, name: "關於買屋網", link: "about.html" },
+  { id: 1, name: "首页", link: "home.html" },
+  { id: 2, name: "關於我們", link: "about.html" },
+  { id: 3, name: "服務項目", link: "serve.html" },
+  { id: 4, name: "菁英群", link: "eliteGroup.html" },
+  { id: 5, name: "房產大小事", link: "news.html" },
+  { id: 6, name: "法拍專業課程", link: "class.html" },
+  { id: 7, name: "資訊會員登入", link: "vipLogin.html" },
 ];
 
 createNavMenu(menuItems, "nav-menu");
