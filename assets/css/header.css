@@ -11,6 +11,11 @@
   height: 60px;
 }
 
+a:hover{
+  text-decoration: none;
+}
+
+
 .header .left {
   display: flex;
 }
@@ -27,6 +32,9 @@
   color: #ACDAFF;
   font-size: 16px;
   cursor: pointer;
+}
+.header .nav-menu li i{
+  color:#fff;
 }
 
 .header .nav-menu li:hover,.header .nav-menu li.active{

@@ -35,7 +35,7 @@
     </div>
 
     <main class="el-main">
-      <div class="banner">
+      <div class="banner hidden-xs-only">
         <div class="tab-container">
           <ul class="tab-menu">
             <li class="tab-item active" data-tab="new-exposure">新曝光</li>
@@ -71,7 +71,7 @@
           </div>
         </div>
       </div>
-      <div class="containers">
+      <div class="containers mobile">
         <!-- 锚点 -->
         <div class="anchor-point hidden-xs-only">
           <ul class="anchor-list">
@@ -83,9 +83,36 @@
             <li><a href="#news">房產大小事</a></li>
           </ul>
         </div>
+        <!-- mobile - search -->
+        <div class="mobile-search show-xs-only">
+          <div class="mobile-search-header">
+            <img src="./assets/image/logo-mywoo-color.png" alt="">
+            <div class="search-input" onclick="window.location.href='./public/mobile-search.html'">
+              <select class="city-select">
+                <option value="高雄市">高雄市</option>
+              </select>
+              <i class="el-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+                  <path fill="#999"
+                    d="m795.904 750.72 124.992 124.928a32 32 0 0 1-45.248 45.248L750.656 795.904a416 416 0 1 1 45.248-45.248zM480 832a352 352 0 1 0 0-704 352 352 0 0 0 0 704">
+                  </path>
+                </svg>
+              </i>
+              <input type="text" placeholder="請輸入物件關鍵字...">
+            </div>
+          </div>
+          <div class="mobile-search-banner">
+            <img src="./assets/image/home/mobile-banner.svg" alt="" srcset="">
+          </div>
+          <div class="mobile-menu">
+          </div>
+        </div>
         <!-- 抢先曝光 -->
         <div class="content-box" id="exposure">
-          <div class="title"><a>搶先曝光</a></div>
+          <div class="title">
+            <a>搶先曝光</a>
+            <a class="show-xs-only exposure-more">更多 ></a>
+          </div>
           <div class="exposure-swiper hidden-xs-swiper-only">
             <div class="swiper-containers exposure-swiper-container">
               <div class="swiper-wrapper house-list" id="exposureList">
@@ -96,17 +123,20 @@
             <div class="swiper-button-prev custom-prev"></div>
             <div class="swiper-button-next custom-next"></div>
           </div>
-          <div class="load-button">
+          <div class="load-button hidden-xs-only">
             <p>查看更多(12000筆)</p>
+          </div>
+          <div class="house-list row show-xs-only" id="exposure-mobile-list">
+            <!-- 动态数据将通过 jQuery填充 -->
           </div>
         </div>
         <!-- 精選物件 -->
         <div class="content-box" id="selected">
-          <div class="title"><a>精選物件</a></div>
+          <div class="title"><a>精選物件</a><a class="show-xs-only selected-more">更多 ></a></div>
           <div class="house-list row" id="selectedList">
             <!-- 动态数据将通过 jQuery填充 -->
           </div>
-          <div class="load-button">
+          <div class="load-button hidden-xs-only">
             <p>查看更多(12000筆)</p>
           </div>
         </div>
@@ -119,7 +149,7 @@
         </div>
         <!-- 專業菁英群 -->
         <div class="content-box" id="elite">
-          <div class="title"><a>專業菁英群</a></div>
+          <div class="title"><a>專業菁英群</a><a class="show-xs-only">更多 ></a></div>
           <div class="elite-swiper hidden-xs-swiper-only">
             <div class="swiper-containers elite-swiper-container">
               <div class="swiper-wrapper elite-list" id="eliteList">
@@ -130,6 +160,9 @@
             <div class="swiper-button-prev custom-prev"></div>
             <div class="swiper-button-next custom-next"></div>
           </div>
+          <div class="swiper-wrapper elite-list show-xs-only" id="elite-mobile-list">
+            <!-- 数据将通过 jQuery 动态填充 -->
+          </div>
         </div>
         <!-- 房產大小事 -->
         <div class="content-box" id="news">
@@ -138,103 +171,143 @@
             <!-- 动态数据将通过 jQuery填充 -->
           </div>
         </div>
-      </div>
 
-      <!-- 法拍專業課程 -->
-      <div class="french-auction-class">
-        <div class="swiper-container">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <div class="containers">
-                <div class="box">
-                  <p>法拍專業課程</p>
-                  <p>法拍入門班 <span>9/12日開課</span></p>
-                  <p>適合初入領域及法拍市場的您</p>
-                  <p><a href="#">立 即 報 名</a></p>
-                </div>
+        <!-- 法拍课程 -->
+        <div class="mobile-class show-xs-only">
+          <div class="title"><a>法拍專業課程</a></div>
+          <div class="content">
+            <div class="card-class">
+              <div class="img">
+                <p>9/12日開課</p>
+                <img src="./assets/image/home/pic1.svg" alt="法拍入門班">
               </div>
-              <img src="./assets/image/home/pic11.svg" alt="法拍入門班">
+              <div class="card-content">
+                <h3>法拍入門班</h3>
+                <p>適合初入領域及法拍市場的您</p>
+              </div>
+              <div class="register-button">立即報名</div>
             </div>
-            <div class="swiper-slide">
-              <div class="containers">
-                <div class="box">
-                  <p>法拍專業課程</p>
-                  <p>法拍實務班 <span>10/12日開課</span></p>
-                  <p>適合有意投入於不動產市場交易的您，<br />有效掌握不動產交易市場情勢</p>
-                  <p><a href="#">立 即 報 名</a></p>
-                </div>
+            <div class="card-class">
+              <div class="img">
+                <p>9/12日開課</p>
+                <img src="./assets/image/home/pic2.svg" alt="法拍實務班">
               </div>
-              <img src="./assets/image/home/pic22.svg" alt="法拍實務班">
+              <div class="card-content">
+                <h3>法拍實務班</h3>
+                <p>適合有意投入於不動產市場交易的您，有效掌握不動產交易市場情勢</p>
+              </div>
+              <div class="register-button">立即報名</div>
             </div>
-            <div class="swiper-slide">
-              <div class="containers">
-                <div class="box">
-                  <p>法拍專業課程</p>
-                  <p>法拍高階班 <span>9/12日開課</span></p>
-                  <p>適合已參與過實務班，<br />對法拍實務具一定程度熟悉及敏銳度的您</p>
-                  <p><a href="#">立 即 報 名</a></p>
-                </div>
+            <div class="card-class">
+              <div class="img">
+                <p>10/12日開課</p>
+                <img src="./assets/image/home/pic3.svg" alt="法拍高階班">
               </div>
-              <img src="./assets/image/home/pic33.svg" alt="法拍高階班">
+              <div class="card-content">
+                <h3>法拍高階班</h3>
+                <p>適合已參與過實務班，對法拍實務具一定程度熟悉的您</p>
+              </div>
+              <div class="register-button">立即報名</div>
             </div>
           </div>
-          <!-- 分页指示器 -->
-          <div class="swiper-pagination"></div>
-          <!-- 导航按钮 -->
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
         </div>
       </div>
+  </div>
 
-
-    </main>
-
-    <footer class="footer-wrapper">
-      <div class="footer-inner containers">
-        <div class="footer-top">
-          <div class="logo-section">
-            <img src="assets/image/icon-logo.png" alt="MYWOO買屋網" class="logo" />
-          </div>
-          <ul class="nav-section">
-            <li><a href="#">關於買屋網</a></li>
-            <li><a href="#">物件列表</a></li>
-            <li><a href="#">房產大小事</a></li>
-            <li><a href="#">最新消息</a></li>
-            <li><a href="#">常見問題</a></li>
-            <li><a href="#">業務型象</a></li>
-            <li><a href="#">跟隨我們</a></li>
-          </ul>
-        </div>
-
-        <div class="font-content">
-          <div class="footer-warning">
-            <strong>警語及免責聲明</strong>
-            <p>
-              本網站僅提供刊登的媒介，不應以此作為投資或購買房屋依據，請務必謹慎評估，本網站不對使用者負任何瑕疵擔保及買賣盈虧責任。本站案件內容若有遗识，概以拍賣執行單位公告為準。
-            </p>
-          </div>
-          <div class="contact-group">
-            <div class="phone">
-              <img src="assets/image/icons/icon-iphone.svg" alt="phone" />
-              <a href="tel:0911151441" class="phone-button">
-                0911-151441
-              </a>
-            </div>
-            <div class="socials">
-              <a href="#"><img src="assets/image/icons/icon-line1.svg" alt="line" /></a>
-              <a href="#"><img src="assets/image/icons/icon-facebook.svg" alt="facebook" /></a>
-              <a href="#"><img src="assets/image/icons/icon-youtub.svg" alt="youtube" /></a>
+  <!-- 法拍專業課程 -->
+  <div class="french-auction-class">
+    <div class="swiper-container hidden-xs-only">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="containers">
+            <div class="box">
+              <p>法拍專業課程</p>
+              <p>法拍入門班 <span>9/12日開課</span></p>
+              <p>適合初入領域及法拍市場的您</p>
+              <p><a href="#">立 即 報 名</a></p>
             </div>
           </div>
+          <img src="./assets/image/home/pic11.svg" alt="法拍入門班">
         </div>
-
-        <div class="footer-bottom">
-          「透明房訊雜誌社 / 一零四法拍網股份有限公司 / 行情通實價網雜誌社 / 一零四高欣仲介經紀有限公司 / 愛上法拍屋資訊股份有限公司 / 一零四安鑫仲介經紀有限公司」共同創設之版權所有。
-          <a href="#">免責聲明</a><a href="#">隱私權政策</a> 版權 © 1986-2024 買屋網-便宜中古屋
+        <div class="swiper-slide">
+          <div class="containers">
+            <div class="box">
+              <p>法拍專業課程</p>
+              <p>法拍實務班 <span>10/12日開課</span></p>
+              <p>適合有意投入於不動產市場交易的您，<br />有效掌握不動產交易市場情勢</p>
+              <p><a href="#">立 即 報 名</a></p>
+            </div>
+          </div>
+          <img src="./assets/image/home/pic22.svg" alt="法拍實務班">
+        </div>
+        <div class="swiper-slide">
+          <div class="containers">
+            <div class="box">
+              <p>法拍專業課程</p>
+              <p>法拍高階班 <span>9/12日開課</span></p>
+              <p>適合已參與過實務班，<br />對法拍實務具一定程度熟悉及敏銳度的您</p>
+              <p><a href="#">立 即 報 名</a></p>
+            </div>
+          </div>
+          <img src="./assets/image/home/pic33.svg" alt="法拍高階班">
         </div>
       </div>
-      <p class="border1 hidden-xs-only"></p>
-    </footer>
+      <!-- 分页指示器 -->
+      <div class="swiper-pagination"></div>
+      <!-- 导航按钮 -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+
+  </main>
+
+  <footer class="footer-wrapper">
+    <div class="footer-inner containers">
+      <div class="footer-top">
+        <div class="logo-section">
+          <img src="assets/image/icon-logo.png" alt="MYWOO買屋網" class="logo" />
+        </div>
+        <ul class="nav-section">
+          <li><a href="#">關於買屋網</a></li>
+          <li><a href="#">物件列表</a></li>
+          <li><a href="#">房產大小事</a></li>
+          <li><a href="#">最新消息</a></li>
+          <li><a href="#">常見問題</a></li>
+          <li><a href="#">業務型象</a></li>
+          <li><a href="#">跟隨我們</a></li>
+        </ul>
+      </div>
+
+      <div class="font-content">
+        <div class="footer-warning">
+          <strong>警語及免責聲明</strong>
+          <p>
+            本網站僅提供刊登的媒介，不應以此作為投資或購買房屋依據，請務必謹慎評估，本網站不對使用者負任何瑕疵擔保及買賣盈虧責任。本站案件內容若有遗识，概以拍賣執行單位公告為準。
+          </p>
+        </div>
+        <div class="contact-group">
+          <div class="phone">
+            <img src="assets/image/icons/icon-iphone.svg" alt="phone" />
+            <a href="tel:0911151441" class="phone-button">
+              0911-151441
+            </a>
+          </div>
+          <div class="socials">
+            <a href="#"><img src="assets/image/icons/icon-line1.svg" alt="line" /></a>
+            <a href="#"><img src="assets/image/icons/icon-facebook.svg" alt="facebook" /></a>
+            <a href="#"><img src="assets/image/icons/icon-youtub.svg" alt="youtube" /></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        「透明房訊雜誌社 / 一零四法拍網股份有限公司 / 行情通實價網雜誌社 / 一零四高欣仲介經紀有限公司 / 愛上法拍屋資訊股份有限公司 / 一零四安鑫仲介經紀有限公司」共同創設之版權所有。
+        <a href="#">免責聲明</a><a href="#">隱私權政策</a> 版權 © 1986-2024 買屋網-便宜中古屋
+      </div>
+    </div>
+    <p class="border1 hidden-xs-only"></p>
+  </footer>
   </div>
 
   <script src="./assets/js/header.js"></script>
@@ -283,7 +356,6 @@
         }
 
         // 滚动到特定位置时，锚点激活class
-        // 滚动到特定位置时，锚点激活class
         const sections = ['#exposure', '#selected', '#ranking', '#elite', '#news'];
         sections.forEach((section) => {
           const sectionOffset = $(section).offset().top - 100;
@@ -315,6 +387,26 @@
           return
         }
         alert(`您選擇的类型是: ${tabItem}，城市是: ${city}${cityText}，搜尋關鍵字是: ${search}`);
+        window.location.href = `./list.html?city=${cityText}&cityId=${city}&keyword=${search}&type=${tabItem}`
+      });
+      // 移动端banner区域  菜单
+      const menuData = [
+        { icon: "./assets/image/icon-newexp.png", label: "新曝光", href: "../home.html?code=首页" },
+        { icon: "./assets/image/icon-search-case.png", label: "找好房", href: "../list.html?code=找好房" },
+        { icon: "./assets/image/icon-map-case.png", label: "地圖找房", href: "../list-map.html?code=地图找房" },
+        { icon: "./assets/image/icon-sales.png", label: "專業菁英" },
+        { icon: "./assets/image/icon-business.png", label: "房產大小事" },
+      ];
+      $.each(menuData, function (i, item) {
+        let html = `
+          <div class="menu-item">
+            <a href="${item.href}">
+              <img src="${item.icon}" alt="${item.label}">
+              <p>${item.label}</p>
+            </a>
+          </div>
+        `;
+        $(".mobile-menu").append(html);
       });
       // 抢先曝光
       const exposureData = [
@@ -322,17 +414,17 @@
           image: "./assets/image/list/pic1.svg",
           area: "苓雅區 | 公寓 | 33.3坪",
           price: Math.floor(Math.random() * 9000) + 1000,
-          info: "房貸緊縮!法拍好貸! 武廟商圈正3房",
+          info: "近民族車站建國路電腦商場美寓4+1樓  蘇秀珠",
           date: '114/3/12(三)',
-          tag: "精选",
+          tag: "精選",
           count: "1拍",
         },
         {
           image: "./assets/image/list/pic2.svg",
           area: "三民區 | 公寓 | 28.5坪",
-          tag: "精选",
+          tag: "精選",
           price: Math.floor(Math.random() * 9000) + 1000,
-          info: "近捷運站，生活機能便利",
+          info: "京城愛情海+車位崇德路‧微笑公園 實務經驗最紮實 林邵涵",
           date: '114/3/12(三)',
           count: "2拍",
         },
@@ -361,26 +453,43 @@
           count: "1拍",
         }
       ]
-      exposureData.forEach((item) => {
-        $("#exposureList").append(`
+      let exposure_list;
+      if ($(window).width() < 768) {
+        exposure_list = exposureData.slice(0, 2);
+      } else {
+        exposure_list = exposureData.slice(0, 8);
+      }
+      function generateExposureHTML(item) {
+        const tagHTML = item.tag ? `<p class="tag">${item.tag}</p>` : '';
+        return `
           <div class="swiper-slide">
             <div class="card-wrapper">
               <div class="image">
-                ${item.tag ? `<p class="tag">${item.tag}</p>` : ''}
+                ${tagHTML}
                 <img src="${item.image}" alt="${item.info}">
-                <p class="info">${item.info}</p>
+                <p class="info hidden-xs-only">${item.info}</p>
               </div>
               <div class="content">
-                <p>
+                <p class="info show-xs-only">${item.info}</p>
+                <p class="info-flex">
                   <span class="area">${item.area}</span>
-                  <span class="price">總價<i>${item.price}</i>萬</span>
+                  <span class="price hidden-xs-only">總價<i>${item.price}</i>萬</span>
                 </p>
-                <p class="date">${item.date} | ${item.count}</p>
+                <p class="date hidden-xs-only">${item.date} | ${item.count}</p>
+                <p class="date show-xs-only"><span>開標日 : ${item.date}</span><span>${item.count}</span></p>
+                <p class="show-xs-only"><span class="price">總價<i>${item.price}</i>萬</span><span class="price">單價<i>9.5</i>坪</span></p>
               </div>
             </div>
           </div>
-        `);
+        `;
+      }
+
+      exposure_list.forEach((item) => {
+        const exposureHTML = generateExposureHTML(item);
+        $("#exposureList").append(exposureHTML);
+        $('#exposure-mobile-list').append(exposureHTML);
       });
+
       // 初始化Swiper
       const exposure_swiper = new Swiper('.exposure-swiper-container', {
         slidesPerView: 4, // 每行显示4个
@@ -397,19 +506,19 @@
           image: "./assets/image/list/pic1.svg",
           area: "苓雅區 | 公寓 | 33.3坪",
           price: Math.floor(Math.random() * 9000) + 1000,
-          info: "房貸緊縮!法拍好貸! 武廟商圈正3房",
+          info: "房貸緊縮!武廟商圈正3房美寓 代標千萬經紀人 陳慧瑜",
           date: '114/3/12(三)',
           count: "1拍",
-          tag: "精选",
+          tag: "精選",
         },
         {
           image: "./assets/image/list/pic2.svg",
           area: "三民區 | 公寓 | 28.5坪",
           price: Math.floor(Math.random() * 9000) + 1000,
-          info: "近捷運站，生活機能便利",
+          info: "美濃夜市--車站商圈輕齡方正4層美透 專業法拍首選 宋依璇",
           date: '114/3/12(三)',
           count: "2拍",
-          tag: "精选",
+          tag: "精選",
         },
         {
           image: "./assets/image/list/pic3.svg",
@@ -418,7 +527,7 @@
           info: "高樓層景觀佳，附車位",
           date: '114/3/12(三)',
           count: "1拍",
-          tag: "精选",
+          tag: "精選",
         },
         {
           image: "./assets/image/list/pic1.svg",
@@ -427,7 +536,7 @@
           info: "近商圈，生活便利",
           date: '114/3/12(三)',
           count: "3拍",
-          tag: "精选",
+          tag: "精選",
         },
         {
           image: "./assets/image/list/pic2.svg",
@@ -436,7 +545,7 @@
           info: "新裝潢，拎包入住",
           date: '114/3/12(三)',
           count: "1拍",
-          tag: "精选",
+          tag: "精選",
         },
         {
           image: "./assets/image/list/pic3.svg",
@@ -445,7 +554,7 @@
           info: "近學區，適合家庭居住",
           date: '114/3/12(三)',
           count: "2拍",
-          tag: "精选",
+          tag: "精選",
         },
         {
           image: "./assets/image/list/pic1.svg",
@@ -454,7 +563,7 @@
           info: "交通便利，近公園",
           date: '114/3/12(三)',
           count: "1拍",
-          tag: "精选",
+          tag: "精選",
         },
         {
           image: "./assets/image/list/pic2.svg",
@@ -463,29 +572,39 @@
           info: "低總價，投資首選",
           date: '114/3/12(三)',
           count: "3拍",
-          tag: "精选",
+          tag: "精選",
         }
       ];
-      selectedData.forEach((item) => {
+      let selected_list;
+      if ($(window).width() < 768) {
+        selected_list = selectedData.slice(0, 2);
+      } else {
+        selected_list = selectedData.slice(0, 8);
+      }
+      selected_list.forEach((item) => {
         $("#selectedList").append(`
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 col-12">
             <div class="card-wrapper">
               <div class="image">
                 ${item.tag ? `<p class="tag">${item.tag}</p>` : ''}
                 <img src="${item.image}" alt="${item.info}">
-                <p class="info">${item.info}</p>
+                <p class="info hidden-xs-only">${item.info}</p>
               </div>
               <div class="content">
-                <p>
+                <p class="info show-xs-only">${item.info}</p>
+                <p class="info-flex">
                   <span class="area">${item.area}</span>
-                  <span class="price">總價<i>${item.price}</i>萬</span>
+                  <span class="price hidden-xs-only">總價<i>${item.price}</i>萬</span>
                 </p>
-                <p class="date">${item.date} | ${item.count}</p>
+                <p class="date hidden-xs-only">${item.date} | ${item.count}</p>
+                <p class="date show-xs-only"><span>開標日 : ${item.date}</span><span>${item.count}</span></p>
+                <p class="show-xs-only"><span class="price">總價<i>${item.price}</i>萬</span><span class="price">單價<i>9.5</i>坪</span></p>
               </div>
             </div>
           </div>
         `);
       });
+
 
       // 热门案件排行
       const cityData = [
@@ -575,7 +694,13 @@
           info: "您的疑慮就是我的專業",
         }
       ]
-      eliteData.forEach((item) => {
+      let elite_list;
+      if ($(window).width() < 768) {
+        elite_list = eliteData.slice(0, 3);
+      } else {
+        elite_list = eliteData.slice(0, 8);
+      }
+      elite_list.forEach((item) => {
         $("#eliteList").append(`
           <div class="swiper-slide">
             <div class="card-wrapper">
@@ -584,7 +709,7 @@
                 <img src="${item.image}" alt="${item.name}">
               </div>
               <div class="content">
-                <p>
+                <p class="info-flex">
                   <span class="name">${item.name}</span>
                   <span class="count">代標待售<i>${item.count}</i>件</span>
                 </p>
@@ -593,7 +718,37 @@
             </div>
           </div>
         `);
+        $('#elite-mobile-list').append(`
+            <div class="card-wrapper">
+              <div class="image">
+                <img src="${item.image}" alt="${item.name}">
+              </div>
+              <div class="content">
+                <p>
+                  <span class="name">${item.name}</span>
+                  ${item.tag ? `<span class="tag" style="background-color: ${item.bgcolor};">${item.tag}</span>` : ''}
+                </p>
+                <p class="info">${item.info}</p>
+                <p><span class="count">代標待售<i>${item.count}</i>件</span></p>
+                <div class="btn">
+                  <div class="phone">
+                    <img src="./assets/image/icons/icon-phone.svg" alt="">
+                    <a href="tel:0911151441" class="button">
+                      0911-151441
+                    </a>
+                  </div>
+                  <div class="line">
+                    <img src="./assets/image/icons/icon-line.svg" alt="">
+                    <a href="#" class="button">
+                      Line 加好友
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        `);
       });
+
       // 初始化Swiper
       const elite_swiper = new Swiper('.elite-swiper-container', {
         slidesPerView: 3, // 每行显示4个
@@ -637,9 +792,10 @@
           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 col-6">
             <div class="card-wrapper">
               <div class="image">
-                <p class="tag">${news.tag}</p>
+                <p class="tag hidden-xs-only">${news.tag}</p>
                 <img src="${news.image}" alt="${news.info}">
               </div>
+              <div class="tag show-xs-only">${news.tag}</div>
               <div class="content">
               ${news.info}
               </div>
